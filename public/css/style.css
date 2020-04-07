@@ -1,0 +1,259 @@
+body{
+    background-size: 100%;
+    height: 1000px;
+    background-image: url(images/ALASKA78.jpg);
+    background-position: top;
+}
+
+header{
+    padding: 3em;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+p{
+    font-family: 'Great Vibes';
+    margin: auto;
+    color: rgba(81,234,234,0.75);
+    font-size: 40px;
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 13px;
+
+   
+}
+
+nav li{
+    margin-right: 1em;
+    font-size: 20px;
+   
+
+}
+nav a {
+    color: #29C7AC;
+    padding: 2em;
+    font-size: 17px;
+
+     
+}
+nav a:hover
+{
+    color: rgba(81,234,234,0.75);
+    border-bottom: 2px solid rgba(81,234,234,0.75);
+    padding-bottom: 20px;
+    text-decoration: none;
+}
+.container{
+    position: relative;
+    top: 7em;
+    margin: auto;
+    height: 500px;
+    background-color: rgba(0,0,0,0.8);
+    
+}
+.container p {
+    font-family: 'Great Vibes';
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    padding: 1em;
+
+   
+}
+.btn-bio{
+    position: absolute;
+    top: 30%;
+    right: 45%;
+    width: 17%;
+    height: 65px;
+    background-color: rgba(81,234,234,0.75);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-bio:hover{
+    color: black;
+}
+.btn-chapitre{
+    position: absolute;
+    bottom:15%;
+    right: 45%;
+    width: 17%;
+    height: 65px;
+    background-color: rgba(81,234,234,0.75);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    
+}
+.btn-chapitre:hover{
+    color:black;
+}
+
+/*SECTION BIOGRAPHIE*/
+
+.titre-bio{
+    padding-top: 5em;
+    font-family: Verdana;
+    color: WHITE;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: end;
+    padding-right: 3em;
+    margin-top: 1em;
+}
+
+h1{
+   font-size: 50px;
+   font-weight: bold;
+}
+h2{
+   font-family: Verdana;
+   color: WHITE;
+   font-size: 40px;
+}
+
+.container-bio{
+    position: relative;
+    top: 7em;
+    width: 100%;
+    margin: auto;
+    height: 900px;
+    background-color: rgba(45,128,128,0.95);
+    
+}
+
+hr{
+    width: 40%;
+    background-color: white;
+}
+.container-bio p{
+    color: white;
+    font-family: auto;
+    font-size: 18px;
+    width: 94%;
+    position: absolute;
+    bottom: 7em;
+    margin: 3em;
+}
+.texte-biographie{
+    font-size: 18px;
+    margin: 50px;
+}
+img{
+    width: 30%;
+    position: absolute;
+    border: 12px solid white;
+    top: 11em;
+    right: 57em;
+}
+
+/*CONTACT PAGE*/
+
+.text_form{
+    font-size: 35px;
+    font-weight: bold;
+    margin: auto;
+    padding: 2em;
+}
+.divider
+{
+    width: 500px;
+    height: 1px;
+    background: black;
+    margin: auto auto 3em;
+}
+.container-contact{
+    background-color: rgba(250,250,250,1);
+    position: relative;
+    top: 7em;
+    margin: auto;
+    height: 800px;
+    
+    
+}
+.row{
+    margin:auto;
+}
+label{
+    font-weight: 500;
+    color:black;
+}
+#contact-form
+{
+    font-size: 17px;
+    padding-top: 1em;
+    border-radius: 2px;
+
+}
+
+.blue
+{
+    color: #29c7ac;
+    font-size: 22px;
+    padding: 10px;
+    font-family: serif;
+
+}
+.form-control
+{
+    height: 40px;
+    font-size: 14px;
+}
+#contact-form input[type=submit]
+{
+    margin: 40px auto 0px;
+    display: block;
+}
+
+#contact-form .thank-you
+{
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.button1
+{
+    border: 1px solid #29c7ac;
+    background-color: black;
+    color: white;
+    width: 100%;        
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in 0s;
+    cursor:pointer;
+}
+.button1:hover
+{
+    background-color:#29c7ac;
+    border-color: #fff;
+}
+
+.col-lg-8{
+    margin:auto;
+}
+
+/*CHAPITRE PAGE*/
+
+.container-chapitre{
+    position: relative;
+    top: 6em;
+    margin: auto;
+    width: 85%;
+    height: 500px;
+    background-color: rgba(0,0,0, 0.7);
+    
+}
