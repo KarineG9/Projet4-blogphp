@@ -13,7 +13,7 @@
 </head>
     
     
-   
+<body background-image:url(public\css\images\ALASKA78.jpg)>
     <header>
 
 
@@ -21,22 +21,16 @@
             <p>Jean Forteroche</p>
         </div>
             <nav>
-
                 <ul>
-                    <li><a href="index.html">ACCUEIL</a></li>
-                    <li><a href="bio.html">BIOGRAPHIE</a></li>
-                    <li><a href="chapitre.html">ROMANS</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                   
-
+                <li><a href="accueil.php">ACCUEIL</a></li>
+                <li><a href="bio.php">BIOGRAPHIE</a></li>
+                <li><a href="chapitre.php">ROMANS</a></li>
+                <li><a href="contact.php">CONTACT</a></li>
                 </ul>
             </nav>
-
-
-
     </header>
         
-      <body background-image:url(images/alska22.jpg)>
+    
        
             <div class="container-bio">
                 <div class="titre-bio">
