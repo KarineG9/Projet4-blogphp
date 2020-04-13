@@ -23,8 +23,22 @@ function addComment($postId, $author, $comment)
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
-    }
-    else {
+    } else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+
+function home()
+{
+    require('view/frontend/accueil.php');
+}
+
+function biography()
+{
+    require('view/frontend/bio.php');
+}
+
+function contact()
+{
+    require('view/frontend/contact.php');
 }
