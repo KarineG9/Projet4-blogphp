@@ -1,5 +1,3 @@
-<?php $title = htmlspecialchars($post['title']); ?>
-
 <?php ob_start(); ?>
 
 <h1>Chapitre 1</h1>

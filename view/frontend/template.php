@@ -3,7 +3,7 @@
 
 <head>
 
-    <title><?= $title ?></title>
+    <title>Blog officiel de Jean Forteroche</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,29 +32,30 @@
     </header>
 
     <?= $content ?>
+
+
+    <footer>
+        <div id="plansite">
+            <h3>Plan du site</h3>
+            <p><a href="#">Acceuil</a></p>
+            <p><a href="#">Biographie</a></p>
+            <p><a href="#">Romans</a></p>
+            <p><a href="#">Contact</a></p>
+        </div>
+        <div id="Media">
+            <h3>Tu peux me suivre ici...</h3>
+            <p>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Twitter</a></p>
+            </p>
+        </div>
+        <div id="Admin">
+            <h3>Admin</h3>
+            <p><a href="index.php?action=login">Connexion</a></p>
+        </div>
+
+
+    </footer>
 </body>
-
-<footer>
-    <div id="plansite">
-        <h3>Plan du site</h3>
-        <p><a href="#">Acceuil</a></p>
-        <p><a href="#">Biographie</a></p>
-        <p><a href="#">Romans</a></p>
-        <p><a href="#">Contact</a></p>
-    </div>
-    <div id="Media">
-        <h3>Tu peux me suivre ici...</h3>
-        <p>
-            <img src="images/ico/facebook.png" alt="Facebook">
-            <img src="images/ico/twitter.png" alt="Twitter">
-        </p>
-    </div>
-    <div id="Admin">
-        <h3>Admin</h3>
-        <p><a href="#">Connexion</a></p>
-    </div>
-
-
-</footer>
 
 </html>

@@ -1,18 +1,23 @@
 <?php
-
 require('controller/controller.php');
 
+if (false === isset($_GET['action'])) {
+    home();
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listPosts') {
+    return;
+}
+switch ($_GET['action']) {
+    case 'listPosts':
         listPosts();
-    } elseif ($_GET['action'] == 'post') {
+        break;
+    case 'post':
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             post();
         } else {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
-    } elseif ($_GET['action'] == 'addComment') {
+        break;
+    case 'addComment':
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                 addComment($_GET['id'], $_POST['author'], $_POST['comment']);
@@ -22,11 +27,15 @@ if (isset($_GET['action'])) {
         } else {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
-    } elseif ($_GET['action'] == 'biographie') {
+        break;
+    case 'biographie':
         biography();
-    } else if ($_GET['action'] == 'contact') {
+        break;
+    case 'contact':
         contact();
-    }
-} else {
-    home();
+        break;
+    case 'connexion':
+        login();
+    default:
+        home();
 }
