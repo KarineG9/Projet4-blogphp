@@ -15,47 +15,48 @@
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
-<body background-image:url(public\css\images\ALASKA78.jpg)>
-    <header>
-        <div class="logo-header">
-            <p>Jean Forteroche</p>
-        </div>
-        <nav>
+<body>
+    <div class="container-body">
+        <header>
+            <div class="logo-header">
+                <p class='title-header'>Jean Forteroche</p>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-item" href="index.php">ACCUEIL</a></li>
+                    <li class="nav-item"><a class="nav-item" href="index.php?action=biographie">BIOGRAPHIE</a></li>
+                    <li class="nav-item"><a class="nav-item" href="index.php?action=listPosts">ROMANS</a></li>
+                    <li class="nav-item"><a class="nav-item" href="index.php?action=contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            <ul>
-                <li><a href="index.php">ACCUEIL</a></li>
-                <li><a href="index.php?action=biographie">BIOGRAPHIE</a></li>
-                <li><a href="index.php?action=listPosts">ROMANS</a></li>
-                <li><a href="index.php?action=contact">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <?= $content ?>
-
-
-    <footer>
-        <div id="plansite">
-            <h3>Plan du site</h3>
-            <p><a href="#">Acceuil</a></p>
-            <p><a href="#">Biographie</a></p>
-            <p><a href="#">Romans</a></p>
-            <p><a href="#">Contact</a></p>
-        </div>
-        <div id="Media">
-            <h3>Tu peux me suivre ici...</h3>
-            <p>
-                <p><a href="#">Facebook</a></p>
-                <p><a href="#">Twitter</a></p>
-            </p>
-        </div>
-        <div id="Admin">
-            <h3>Admin</h3>
-            <p><a href="index.php?action=login">Connexion</a></p>
-        </div>
+        <?= $content ?>
 
 
-    </footer>
+        <footer>
+            <div id="plansite">
+                <h3>Plan du site</h3>
+                <p><a href="#">Acceuil</a></p>
+                <p><a href="#">Biographie</a></p>
+                <p><a href="#">Romans</a></p>
+                <p><a href="#">Contact</a></p>
+            </div>
+            <div id="Media">
+                <h3>Tu peux me suivre ici...</h3>
+                <p>
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Twitter</a></p>
+                </p>
+            </div>
+            <div id="Admin">
+                <h3>Admin</h3>
+                <p><a href="index.php?action=connexion">Connexion</a></p>
+            </div>
+
+
+        </footer>
+    </div>
 </body>
 
 </html>

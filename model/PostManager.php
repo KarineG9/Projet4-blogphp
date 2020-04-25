@@ -1,23 +1,19 @@
 <?php
 require_once("model/Manager.php");
 
-class PostManager extends Manager
+class PostManager extends Database
 {
     public function getPosts()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
-
-        return $req;
+        $sql = 'SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+        AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5';
+        return $this->createQuery($sql);
     }
 
     public function getPost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
-
-        return $post;
+        $sql = 'SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+        AS creation_date_fr FROM posts WHERE id = ?';
+        return $this->createQuery($sql, [$postId]);
     }
 }

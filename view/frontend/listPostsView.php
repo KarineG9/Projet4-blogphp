@@ -1,34 +1,47 @@
-<?php $title = 'Blog officiel de Jean Forteroche'; ?>
+<?php
+
+require_once('model/Manager.php');
+
+require_once('model/PostManager.php');
+
+$title = 'Blog officiel de Jean Forteroche'; ?>
 
 <?php ob_start(); ?>
-<h1>Billet simple pour l'Alaska</h1>
-<p>Les chapites </p>
+
+
+<h1 class=title-h1>~ Billet simple pour l'Alaska ~</h1>
+<h2 class="title-chap">Chapitres </h2>
+
 
 <?php
-while ($data = $posts->fetch()) {
+while ($element = $posts->fetch(PDO::FETCH_ASSOC)) {
+
 
 ?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']); ?>
-            <em>le <?= $data['creation_date_fr']; ?></em>
-        </h3>
 
-        <p>
-            <?= nl2br(htmlspecialchars($data['content']));
-            ?>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
+<div class="container">
+    <div class="col-lg-12">
+        <article class="news">
+            <h3 class="title-post">
+                <?php htmlspecialchars($element['title']); ?>
+
+                <em>le <?= $element['creation_date_fr']; ?></em>
+            </h3>
+
+            <p class="content-post">
+                <?= nl2br(htmlspecialchars($element['content']));
+                    ?>
+                <br />
+                <em><a href="index.php?action=post&amp;id=<?= $element['id'] ?>">Lire la suite</a></em>
+            </p>
+        </article>
     </div>
+</div>
 <?php
 }
 $posts->closeCursor();
+
 ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('view/frontend/template.php'); ?>
-
-</body>
-
-</html>
+<?php require('template.php'); ?>

@@ -1,21 +1,22 @@
 <?php ob_start(); ?>
 
+<div class="row">
+    <div class="col-lg-12 col-lg-offset-1">
+        <div id="container-login">
+            <form id="loginform" action="login.php" method="POST">
+                <h1 class="title-login">Connexion</h1>
+                <div class="col-md-6">
+                    <input type="text" placeholder="Nom d'utilisateur" name="username" class="form-control" required>
+                    <br />
+                </div>
+                <div class="col-md-6">
+                    <input type="pass" placeholder="Entrer le mot de passe" name="pass" class="form-control" required>
+                </div>
+                <br />
+                <input type="submit" class="button2" value="Valider">
 
-<div id="container">
-    <form action="login.php" method="POST">
-        <h1>Connexion</h1>
+            </form>
+        </div>
 
-        <label><b>Nom d'utilisateur</b></label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
-
-        <label><b>Mot de passe</b></label>
-        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
-
-        <input type="submit" id='submit' value='LOGIN'>
-
-    </form>
-</div>
-
-
-<?php $content = ob_get_clean(); ?>
-<?php require('template.php'); ?>
+        <?php $content = ob_get_clean(); ?>
+        <?php require('template.php'); ?>

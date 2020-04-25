@@ -1,6 +1,7 @@
 <?php
 require('controller/controller.php');
 
+
 if (false === isset($_GET['action'])) {
     home();
 
@@ -28,6 +29,7 @@ switch ($_GET['action']) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
         break;
+
     case 'biographie':
         biography();
         break;
@@ -36,6 +38,7 @@ switch ($_GET['action']) {
         break;
     case 'connexion':
         login();
+        break;
     default:
         home();
 }
