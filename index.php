@@ -30,14 +30,20 @@ switch ($_GET['action']) {
         }
         break;
 
+    case 'warningComment':
+        warningC($_GET['idWarningC']);
+        break;
+    case 'connexion':
+        loginPage();
+        break;
+    case 'homeAdmin':
+        adminConnection($_POST['username'], $_POST['pass']);
+        break;
     case 'biographie':
         biography();
         break;
     case 'contact':
         contact();
-        break;
-    case 'connexion':
-        login();
         break;
     default:
         home();

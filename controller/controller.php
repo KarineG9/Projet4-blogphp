@@ -1,8 +1,9 @@
 <?php
-
+require_once('model/Database.php');
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-require_once('model/Manager.php');
+require_once('model/UserManager.php');
+
 
 
 function listPosts()
@@ -36,20 +37,19 @@ function addComment($postId, $author, $comment)
     }
 }
 
-
-
-
-function adminConnection()
+function adminConnection($pseudo, $password)
 {
-
-    $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-
-    if (password_verify($_POST['pass'], $pass_hash)) {
-        echo 'mot de passe valide';
-    } else {
-        echo 'erreur';
-    }
+    $userObj = new LoginConnexion();
+    $userModel = $userObj->loginUser($pseudo, $password);
+    require('view/frontend/homeAdmin.php');
 }
+
+function userNew($pseudo, $password)
+{
+    $newUserObj = new LoginConnexion;
+    $user = $newUserObj->newUser($pseudo, $password);
+}
+
 function home()
 {
     require('view/frontend/accueil.php');
@@ -64,7 +64,15 @@ function contact()
 {
     require('view/frontend/contact.php');
 }
-function login()
+function loginPage()
 {
     require('view/frontend/loginAdmin.php');
+}
+function warningC($commentID)
+{
+
+    $commentW = new CommentManager();
+    $commW = $commentW->warningComment($commentID);
+
+    echo '<script>alert("Commentaire signalé !")</script>';
 }

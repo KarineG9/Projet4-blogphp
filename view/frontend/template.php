@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" />
-
+    <link rel="icon" type="img" href="public/css/images/logo.png" />
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
@@ -37,10 +37,10 @@
         <footer>
             <div id="plansite">
                 <h3>Plan du site</h3>
-                <p><a href="#">Acceuil</a></p>
-                <p><a href="#">Biographie</a></p>
-                <p><a href="#">Romans</a></p>
-                <p><a href="#">Contact</a></p>
+                <p><a href="index.php">Acceuil</a></p>
+                <p><a href="index.php?action=biographie">Biographie</a></p>
+                <p><a href="index.php?action=listPosts">Romans</a></p>
+                <p><a href="index.php?action=contact">Contact</a></p>
             </div>
             <div id="Media">
                 <h3>Tu peux me suivre ici...</h3>

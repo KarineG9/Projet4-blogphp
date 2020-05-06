@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12 col-lg-offset-1">
         <div id="container-login">
-            <form id="loginform" action="login.php" method="POST">
+            <form id="loginform" action="index.php?action=homeAdmin" method="POST">
                 <h1 class="title-login">Connexion</h1>
                 <div class="col-md-6">
                     <input type="text" placeholder="Nom d'utilisateur" name="username" class="form-control" required>
@@ -17,6 +17,6 @@
 
             </form>
         </div>
-
-        <?php $content = ob_get_clean(); ?>
-        <?php require('template.php'); ?>
+    </div>
+    <?php $content = ob_get_clean(); ?>
+    <?php require('template.php'); ?>

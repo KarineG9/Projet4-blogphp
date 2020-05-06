@@ -1,5 +1,5 @@
 <?php
-require_once("model/Manager.php");
+require_once("model/Database.php");
 
 class CommentManager extends Database
 {
@@ -17,5 +17,11 @@ class CommentManager extends Database
 
         $sql = 'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())';
         return $this->createQuery($sql, [$postId, $author, $comment]);
+    }
+
+    public function warningComment($IDcomment)
+    {
+        $sql = 'UPDATE comments SET warning = TRUE WHERE id = ?';
+        return $this->createQuery($sql, [$IDcomment]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-abstract class Database
+class Database
 {
 
     const DB_HOST = 'mysql:host=localhost;dbname=projetblog;charset=utf8';
@@ -17,7 +17,7 @@ abstract class Database
 
         return $this->connection;
     }
-    private function dbConnect()
+    public function dbConnect()
     {
         try {
 
@@ -37,6 +37,7 @@ abstract class Database
             $result->execute($parameters);
             return $result;
         }
+
         $result = $this->checkConnection()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $result;

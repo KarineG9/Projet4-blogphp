@@ -314,6 +314,13 @@ textarea{
     width: 30%;
     height: 150px;
 }
+.returnlist{
+    text-align: center;
+    color: black;
+    text-decoration: underline;
+    font-size:18px;
+    font-weight: bold;
+}
 /*CONNEXION PAGE*/
 
 #container-login{
