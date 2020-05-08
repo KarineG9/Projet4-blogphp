@@ -2,7 +2,10 @@
 require_once('model/Database.php');
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-require_once('model/UserManager.php');
+require_once('model/LoginConnexion.php');
+require_once('model/ItemManager.php');
+
+
 
 
 
@@ -37,19 +40,6 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function adminConnection($pseudo, $password)
-{
-    $userObj = new LoginConnexion();
-    $userModel = $userObj->loginUser($pseudo, $password);
-    require('view/frontend/homeAdmin.php');
-}
-
-function userNew($pseudo, $password)
-{
-    $newUserObj = new LoginConnexion;
-    $user = $newUserObj->newUser($pseudo, $password);
-}
-
 function home()
 {
     require('view/frontend/accueil.php');
@@ -75,4 +65,47 @@ function warningC($commentID)
     $commW = $commentW->warningComment($commentID);
 
     echo '<script>alert("Commentaire signalé !")</script>';
+}
+
+// PARTIE BACK OFFICE ADMIN //
+
+function adminConnection($pseudo, $password)
+{
+    $userObj = new LoginConnexion();
+    $userModel = $userObj->loginUser($pseudo, $password);
+    require('view/frontend/homeAdmin.php');
+}
+
+function postsBackAdmin()
+{
+    $postAdminObj = new ItemManager();
+    $posts = $postAdminObj->getAllPosts();
+    return $posts;
+}
+
+function userNew($pseudo, $password)
+{
+    $newUserObj = new LoginConnexion;
+    $user = $newUserObj->newUser($pseudo, $password);
+}
+
+function seeItem()
+{
+    $itemObj = new ItemManager();
+    $seeItem = $itemObj->readPost($_GET['idPost']);
+    require('view/frontend/viewItem.php');
+}
+
+function addItem($id, $author, $title, $content, $date_post)
+{
+    $itemObj = new ItemManager();
+    $createItem = $itemObj->createPost($id, $author, $title, $content, $date_post);
+    require('view/frontend/insertPost.php');
+}
+
+function updateItem($id, $author, $title, $content, $date_post)
+{
+    $itemObj = new ItemManager();
+    $updateItem = $itemObj->updatePost($id, $author, $title, $content, $date_post);
+    require('view/frontend/updatePost.php');
 }

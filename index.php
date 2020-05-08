@@ -29,7 +29,6 @@ switch ($_GET['action']) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
         break;
-
     case 'warningComment':
         warningC($_GET['idWarningC']);
         break;
@@ -38,12 +37,32 @@ switch ($_GET['action']) {
         break;
     case 'homeAdmin':
         adminConnection($_POST['username'], $_POST['pass']);
+        postsBackAdmin();
         break;
     case 'biographie':
         biography();
         break;
     case 'contact':
         contact();
+        break;
+    case 'viewItem':
+        seeItem($_GET['idPost']);
+        break;
+    case 'insertItem':
+        if (!empty($_POST)) {
+            $id = $_POST["id"];
+            $author = $_POST["author_post"];
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            $date_post = $_POST["creation_date"];
+        }
+        addItem($id, $author, $title, $content, $date_post);
+        break;
+    case 'updateItem':
+        if (!empty($_GET['id'])) {
+            $id = ($_GET['id']);
+        }
+        updateItem($id, $author, $title, $content, $date_post);
         break;
     default:
         home();

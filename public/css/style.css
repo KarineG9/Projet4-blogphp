@@ -391,3 +391,20 @@ footer p{
 #Admin{
     width: 20%;
 }
+
+/* ADMIN*/
+.admin
+{
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+}
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.listItem{
+    display: flex;
+    flex-direction: column;
+}
