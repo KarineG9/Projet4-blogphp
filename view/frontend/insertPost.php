@@ -2,7 +2,6 @@
 
 require_once('controller/controller.php');
 
-$createItem = addItem($id, $author, $title, $content, $date_post);
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +28,9 @@ $createItem = addItem($id, $author, $title, $content, $date_post);
         </div>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=biographie">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=listPosts">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
 
             </ul>
         </nav>
@@ -43,31 +42,24 @@ $createItem = addItem($id, $author, $title, $content, $date_post);
                 <h1>Créer un article </h1>
                 <br>
                 <div class='listItem'>
-                    <form class="form" role="form" action='index.php?action=insertPost' method="POST">
+                    <form class="form" role="form" action='index.php' method="GET">
 
 
+                        <label for="author">Auteur</label>
+                        <input type="text" class="form-control" id="author" name="author_post" placeholder="Auteur">
+                        <label for="author">Titre</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Titre">
+                        <label for="author">Contenu</label>
+                        <input type="text" class="form-control" id="content" name="content" placeholder="Contenu">
 
-                    </form>
-                    <?php
-                    $item = $createItem->fetch(PDO::FETCH_ASSOC);
-
-                    ?>
-                    <label for="author">Auteur</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Auteur"
-                        value="<?php echo $author; ?>">
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Titre"
-                        value="<?php echo $title; ?>">
-                    <input type="text" class="form-control" id="content" name="content" placeholder="Contenu"
-                        value="<?php echo $contenu; ?>">
-                    <input type="text" class="form-control" id="date" name="date" placeholder="Date"
-                        value="<?php echo $date_post; ?>">
 
 
 
                 </div>
                 <br>
-                <button type="submit" class="btn btn-outline-succes">Ajouter</button>
+                <button type="submit" class="btn btn-outline-succes" value="create" name="action">Ajouter</button>
                 <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
+                </form>
 
             </div>
         </div>

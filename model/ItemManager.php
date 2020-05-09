@@ -15,18 +15,17 @@ class ItemManager extends Database
         return $this->createQuery($sql, [$itemId]);
     }
 
-    public function createPost($author, $title, $content, $date_post)
+    public function createPost($author, $title, $content)
     {
-        $sql = "INSERT INTO posts (author_post, title, content, DATE_FORMAT(creation_date,'%d/%m/%Y') 
-        AS creation_date_fr VALUES(?, ?, ?, ?)";
-        return $this->createQuery($sql, [$author], [$title], [$content], [$date_post]);
+        $sql = "INSERT INTO posts (author_post, title, content) VALUES(?,?,?)";
+        return $this->createQuery($sql, [$author, $title, $content]);
     }
 
     public function updatePost($id, $author, $title, $content, $date_post)
     {
         $sql = "UPDATE posts SET author_post = ?, title = ?, content = ?, creation_date = ?
         WHERE id = ? ";
-        return $this->createQuery($sql, [$id], [$author], [$title], [$content], [$date_post]);
+        return $this->createQuery($sql, [$id, $author, $title, $content, $date_post]);
     }
 
     public function deletePost($id)

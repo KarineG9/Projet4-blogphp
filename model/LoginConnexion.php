@@ -14,17 +14,12 @@ class LoginConnexion extends Database
 
 
 
-    public function loginUser($pseudo, $password)
+    public function loginUser($pseudo)
     {
-        $sql = "SELECT username, pass FROM users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = ?";
 
         $result = $this->createQuery($sql, [$pseudo]);
-        $user = $result->fetch(PDO::FETCH_OBJ);
-        if ($user && password_verify($password, $user->pass)) {
-            session_start();
-            $_SESSION['username'] = $pseudo;
-        } else {
-            echo "erreur";
-        }
+        $user = $result->fetch(PDO::FETCH_ASSOC);
+        return $user;
     }
 }

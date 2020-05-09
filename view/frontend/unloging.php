@@ -1,9 +1,11 @@
 <?php
 
-require_once('controller/controller.php');
 
-
+session_destroy();
+header('Location: index.php');
+exit;
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -31,34 +33,27 @@ require_once('controller/controller.php');
             <ul class="nav">
                 <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=Unloging">Déconnexion</a></li>
 
             </ul>
         </nav>
     </header>
-
     <div class="container admin">
         <div class="row">
-            <div class="form-group">
-                <h1>Vue de l'article </h1>
-                <br>
-                <div class='listItem'>
-                    <?php
-                    $item = $seeItem->fetch(PDO::FETCH_ASSOC);
+            <br />
+            <form class="form-horizontal" action="delete.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $id; ?>" />
 
-                    ?>
-                    <label>Auteur</label><?php echo ' ' . $item['author_post']; ?>
-                    <label>Titre</label><?php echo ' ' . $item['title']; ?>
-                    <label>Contenu</label><?php echo ' ' . $item['content']; ?>
-                    <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
+                Vous allez vous déconnecter.
 
-
-
+                <br />
+                <div class="form-actions">
+                    <button type="submit" href="index.php" class="btn btn-danger">Oui</button>
+                    <a class="btn" href="index.php?action=homeAdmin">Non</a>
                 </div>
-                <br>
-                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
+                <p>
 
-            </div>
+            </form>
         </div>
     </div>
 </body>

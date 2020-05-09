@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('controller/controller.php');
 
 
@@ -36,7 +37,7 @@ switch ($_GET['action']) {
         loginPage();
         break;
     case 'homeAdmin':
-        adminConnection($_POST['username'], $_POST['pass']);
+        adminConnection($_GET['username'], $_GET['pass']);
         postsBackAdmin();
         break;
     case 'biographie':
@@ -46,24 +47,47 @@ switch ($_GET['action']) {
         contact();
         break;
     case 'viewItem':
-        seeItem($_GET['idPost']);
+        seeItem($_GET['id']);
         break;
     case 'insertItem':
+        if (!empty($_GET)) {
+            require_once('view/frontend/insertPost.php');
+        }
+        break;
+    case 'create':
+        if (!empty($_GET)) {
+            var_dump($_GET);
+            $author = $_GET["author_post"];
+            $title = $_GET["title"];
+            $content = $_GET["content"];
+
+            addItem($author, $title, $content);
+        }
+        break;
+    case 'updateItem':
         if (!empty($_POST)) {
+
             $id = $_POST["id"];
             $author = $_POST["author_post"];
             $title = $_POST["title"];
             $content = $_POST["content"];
             $date_post = $_POST["creation_date"];
+            updateItem($id, $author, $title, $content, $date_post);
         }
-        addItem($id, $author, $title, $content, $date_post);
         break;
-    case 'updateItem':
+    case 'deleteItem':
         if (!empty($_GET['id'])) {
             $id = ($_GET['id']);
         }
-        updateItem($id, $author, $title, $content, $date_post);
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+            deleteItem($id);
+            header("Location: index.php?action=homeAdmin");
+        }
         break;
+        // case 'unloging':
+        //     unlogingAdmin();
+        //     break;
     default:
         home();
 }

@@ -29,9 +29,9 @@ $updateItem = updateItem($id, $author, $title, $content, $date_post);
         </div>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=biographie">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=listPosts">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
 
             </ul>
         </nav>

@@ -1,5 +1,4 @@
 <?php
-
 require_once('controller/controller.php');
 
 $posts = postsBackAdmin();
@@ -26,13 +25,15 @@ $posts = postsBackAdmin();
 
     <header>
         <div class="logo-header">
-            <p class='title-header'>Bienvenue</p>
+            <p class='title-header'>Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?>
+            </p>
+
         </div>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=biographie">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=listPosts">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
+                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
 
             </ul>
         </nav>
@@ -61,13 +62,13 @@ $posts = postsBackAdmin();
                         echo '<td>' . $item['content'] . '</td>';
                         echo '<td>' . $item['creation_date'] . '</td>';
                         echo '<td width=300>';
-                        echo '<a class="btn btn-outline-success btn-sm" href="index.php?action=insertItem&amp;id=' . $item['id'] . '">Créer</a>';
+                        echo '<a class="btn btn-outline-success btn-sm" href="index.php?action=insertItem">Créer</a>';
                         echo ' ';
-                        echo '<a class="btn btn-outline-info btn-sm" href="index.php?action=viewItem&amp;idPost=' . $item['id'] . '">Lire</a>';
+                        echo '<a class="btn btn-outline-info btn-sm" href="index.php?action=viewItem&amp;id=' . $item['id'] . '">Lire</a>';
                         echo ' ';
                         echo '<a class="btn btn-outline-dark btn-sm" href="index.php?action=updateItem&amp;id=' . $item['id'] . '">Modifier</a>';
                         echo ' ';
-                        echo '<a class="btn btn-outline-danger btn-sm" href="delete.php?id=' . $item['id'] . '">Supprimer</a>';
+                        echo '<a class="btn btn-outline-danger btn-sm" href="index.php?action=deleteItem&amp;id=' . $item['id'] . '">Supprimer</a>';
                         echo '</td>';
                         echo '</tr>';
 

@@ -1,8 +1,7 @@
 <?php
-
 require_once('controller/controller.php');
 
-
+$deleteItem = deleteItem($id);
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +32,7 @@ require_once('controller/controller.php');
                 <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
 
+
             </ul>
         </nav>
     </header>
@@ -40,24 +40,24 @@ require_once('controller/controller.php');
     <div class="container admin">
         <div class="row">
             <div class="form-group">
-                <h1>Vue de l'article </h1>
+                <h1>Supprimer un article </h1>
                 <br>
-                <div class='listItem'>
-                    <?php
-                    $item = $seeItem->fetch(PDO::FETCH_ASSOC);
+                <div class="container admin">
+                    <div class="row">
+                        <br />
+                        <form class="form-horizontal" action="delete.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                            <p class="alert alert-warning">Etes vous sur de supprimer cet article ?</p>
+                            <br />
+                            <div class="form-actions">
+                                <button type="submit" href="index.php" class="btn btn-danger">Oui</button>
+                                <a class="btn" href="index.php?action=homeAdmin">Non</a>
+                            </div>
+                            <p>
 
-                    ?>
-                    <label>Auteur</label><?php echo ' ' . $item['author_post']; ?>
-                    <label>Titre</label><?php echo ' ' . $item['title']; ?>
-                    <label>Contenu</label><?php echo ' ' . $item['content']; ?>
-                    <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
-
-
-
+                        </form>
+                    </div>
                 </div>
-                <br>
-                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
-
             </div>
         </div>
     </div>

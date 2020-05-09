@@ -72,8 +72,16 @@ function warningC($commentID)
 function adminConnection($pseudo, $password)
 {
     $userObj = new LoginConnexion();
-    $userModel = $userObj->loginUser($pseudo, $password);
-    require('view/frontend/homeAdmin.php');
+    $userModel = $userObj->loginUser($pseudo);
+
+    if ($userModel != FALSE && password_verify($password, $userModel['pass'])) {
+        $_SESSION['username'] = $userModel['username'];
+        require('view/frontend/homeAdmin.php');
+    } else {
+
+        $_SESSION['error'] = "Votre identifient et votre mot de passe est incorrect";
+        require('view/frontend/loginAdmin.php');
+    }
 }
 
 function postsBackAdmin()
@@ -92,15 +100,15 @@ function userNew($pseudo, $password)
 function seeItem()
 {
     $itemObj = new ItemManager();
-    $seeItem = $itemObj->readPost($_GET['idPost']);
+    $seeItem = $itemObj->readPost($_GET['id']);
     require('view/frontend/viewItem.php');
 }
 
-function addItem($id, $author, $title, $content, $date_post)
+function addItem($author, $title, $content)
 {
     $itemObj = new ItemManager();
-    $createItem = $itemObj->createPost($id, $author, $title, $content, $date_post);
-    require('view/frontend/insertPost.php');
+    $createItem = $itemObj->createPost($author, $title, $content);
+    require('view/frontend/homeAdmin.php');
 }
 
 function updateItem($id, $author, $title, $content, $date_post)
@@ -109,3 +117,17 @@ function updateItem($id, $author, $title, $content, $date_post)
     $updateItem = $itemObj->updatePost($id, $author, $title, $content, $date_post);
     require('view/frontend/updatePost.php');
 }
+
+function deleteItem($id)
+{
+    $itemObj = new ItemManager();
+    $deleteItem = $itemObj->deletePost($id);
+    require('view/frontend/deletePost.php');
+}
+
+// function unlogingAdmin()
+// {
+//     $unlogObj = new UnlogManager();
+//     $unlog = $unlogObj->unlogAdmin();
+//     require('view/frontend/unloging.php');
+// }
