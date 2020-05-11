@@ -43,21 +43,16 @@ require_once('controller/controller.php');
                 <br>
                 <div class='listItem'>
                     <form class="form" role="form" action='index.php' method="GET">
-
-
                         <label for="author">Auteur</label>
-                        <input type="text" class="form-control" id="author" name="author_post" placeholder="Auteur">
+                        <input type="text" class="form-control" id="author_id" name="author_post" placeholder="">
                         <label for="author">Titre</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Titre">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="">
                         <label for="author">Contenu</label>
-                        <input type="text" class="form-control" id="content" name="content" placeholder="Contenu">
-
-
-
-
+                        <textarea type="text" class="form-control" id="content" name="content" rows="5" cols="33" placeholder=""></textarea>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-outline-succes" value="create" name="action">Ajouter</button>
+                <button type="submit" class="btn btn-outline-success" value="createSubmit" name="action">Ajouter</button>
+                <br>
                 <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
                 </form>
 

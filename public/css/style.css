@@ -400,11 +400,22 @@ footer p{
     border-radius: 10px;
 }
 .form-group {
+    width: 100%;
+    padding: 2em;
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    
 }
 .listItem{
     display: flex;
     flex-direction: column;
+}
+.titleadmin{
+    font-size: 30px;
+    padding-right: 1em;
+}
+.title-group{
+    display: flex;
+    margin-bottom: 1em;
 }

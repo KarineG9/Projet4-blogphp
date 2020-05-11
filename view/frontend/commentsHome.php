@@ -1,7 +1,7 @@
 <?php
 require_once('controller/controller.php');
 
-$posts = postsBackAdmin();
+$viewComs = listCommentsHome();
 
 ?>
 
@@ -42,43 +42,40 @@ $posts = postsBackAdmin();
     <div class="container admin">
         <div class="row">
             <div class="title-group">
-                <h1 class="titleadmin">Liste des articles </h1>
-                <button class="btn btn-outline-success btn-md" value="insertItem">Créer</button>
+                <h1 class="titleadmin">Liste des Commentaires </h1>
             </div>
 
             <table class=" table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Auteur</th>
-                        <th>Titre</th>
-                        <th>Contenu</th>
+                        <th>Commentaire</th>
                         <th>Date</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                    while ($item = $posts->fetch(PDO::FETCH_ASSOC)) {
+                    while ($item = $viewComs->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
-                        <td> <?php echo $item['author_post'] ?></td>
-                        <td> <?php echo $item['title'] ?></td>
-                        <td><?php echo $item['content'] ?></td>
-                        <td><?php echo $item['creation_date'] ?></td>
-                        <td width=300>
+                        <td> <?php echo $item['author'] ?></td>
+                        <td> <?php echo $item['comment'] ?></td>
+                        <td><?php echo $item['comment_date'] ?></td>
+
+                        <!-- <td width=300>
                             <a class="btn btn-outline-info btn-md"
                                 href="index.php?action=viewItem&amp;id=' . $item['id']">Lire</a>
                             <a class="btn btn-outline-dark btn-md"
                                 href="index.php?action=updateItem&amp;id=' . $item['id']">Modifier</a>
                             <a class="btn btn-outline-danger btn-md"
                                 href="index.php?action=deleteItem&amp;id=' . $item['id']">Supprimer</a>
-                        </td>
+                        </td> -->
                     </tr>
 
                     <?php
                     }
-                    $posts->closeCursor();
+                    $viewComs->closeCursor();
 
 
                     ?>

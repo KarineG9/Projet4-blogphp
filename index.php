@@ -54,40 +54,52 @@ switch ($_GET['action']) {
             require_once('view/frontend/insertPost.php');
         }
         break;
-    case 'create':
+    case 'createSubmit':
         if (!empty($_GET)) {
-            var_dump($_GET);
             $author = $_GET["author_post"];
             $title = $_GET["title"];
             $content = $_GET["content"];
-
             addItem($author, $title, $content);
         }
         break;
     case 'updateItem':
-        if (!empty($_POST)) {
+        if (!empty($_GET)) {
+            // $author = $_GET["author_post"];
+            // $title = $_GET["title"];
+            // $content = $_GET["content"];
 
-            $id = $_POST["id"];
-            $author = $_POST["author_post"];
-            $title = $_POST["title"];
-            $content = $_POST["content"];
-            $date_post = $_POST["creation_date"];
-            updateItem($id, $author, $title, $content, $date_post);
+            require_once('view/frontend/updatePost.php');
+            updatetest($author, $title, $content);
+        }
+        break;
+    case 'updateSubmit':
+        if (!empty($_GET)) {
+            $author = $_GET["author_post"];
+            $title = $_GET["title"];
+            $content = $_GET["content"];
+            updateItem($author, $title, $content);
         }
         break;
     case 'deleteItem':
         if (!empty($_GET['id'])) {
             $id = ($_GET['id']);
+            require_once('view/frontend/deletePost.php');
         }
-        if (!empty($_POST)) {
-            $id = $_POST['id'];
+
+        break;
+    case 'deleteSubmit':
+        if (!empty($_GET['id'])) {
+            $id = ($_GET['id']);
             deleteItem($id);
-            header("Location: index.php?action=homeAdmin");
         }
         break;
         // case 'unloging':
         //     unlogingAdmin();
         //     break;
+    case 'commentAdmin':
+        listCommentsHome();
+        require('view/frontend/commentsHome.php');
+        break;
     default:
         home();
 }

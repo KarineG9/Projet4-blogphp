@@ -1,7 +1,7 @@
 <?php
 require_once('controller/controller.php');
 
-$deleteItem = deleteItem($id);
+//$deleteItem = deleteItem($id);
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +31,6 @@ $deleteItem = deleteItem($id);
                 <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
-
-
             </ul>
         </nav>
     </header>
@@ -44,23 +42,18 @@ $deleteItem = deleteItem($id);
                 <br>
                 <div class="container admin">
                     <div class="row">
-                        <br />
-                        <form class="form-horizontal" action="delete.php" method="post">
+                        <form class="form-horizontal" action="index.php" method="GET">
                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
                             <p class="alert alert-warning">Etes vous sur de supprimer cet article ?</p>
                             <br />
                             <div class="form-actions">
-                                <button type="submit" href="index.php" class="btn btn-danger">Oui</button>
+                                <button type="submit" value="deleteSubmit" name="action"
+                                    class="btn btn-danger">Oui</button>
                                 <a class="btn" href="index.php?action=homeAdmin">Non</a>
                             </div>
-                            <p>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
-</html>

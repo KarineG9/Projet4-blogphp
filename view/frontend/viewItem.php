@@ -40,7 +40,7 @@ require_once('controller/controller.php');
     <div class="container admin">
         <div class="row">
             <div class="form-group">
-                <h1>Vue de l'article </h1>
+                <h1>Vue de l'article</h1>
                 <br>
                 <div class='listItem'>
                     <?php
@@ -51,9 +51,6 @@ require_once('controller/controller.php');
                     <label>Titre</label><?php echo ' ' . $item['title']; ?>
                     <label>Contenu</label><?php echo ' ' . $item['content']; ?>
                     <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
-
-
-
                 </div>
                 <br>
                 <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>

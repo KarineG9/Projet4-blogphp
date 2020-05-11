@@ -4,6 +4,7 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/LoginConnexion.php');
 require_once('model/ItemManager.php');
+require_once('model/CommentsHome.php');
 
 
 
@@ -110,19 +111,24 @@ function addItem($author, $title, $content)
     $createItem = $itemObj->createPost($author, $title, $content);
     require('view/frontend/homeAdmin.php');
 }
-
-function updateItem($id, $author, $title, $content, $date_post)
+function updatetest($author, $title, $content)
 {
     $itemObj = new ItemManager();
-    $updateItem = $itemObj->updatePost($id, $author, $title, $content, $date_post);
+    $updatePost = $itemObj->updatePostTest($author, $title, $content);
     require('view/frontend/updatePost.php');
+}
+function updateItem($author, $title, $content)
+{
+    $itemObj = new ItemManager();
+    $updateItem = $itemObj->updatePost($author, $title, $content);
+    require('view/frontend/homeAdmin.php');
 }
 
 function deleteItem($id)
 {
     $itemObj = new ItemManager();
     $deleteItem = $itemObj->deletePost($id);
-    require('view/frontend/deletePost.php');
+    require('view/frontend/homeAdmin.php');
 }
 
 // function unlogingAdmin()
@@ -131,3 +137,12 @@ function deleteItem($id)
 //     $unlog = $unlogObj->unlogAdmin();
 //     require('view/frontend/unloging.php');
 // }
+
+/* COMMENTS HOME */
+
+function listCommentsHome()
+{
+    $commentAdminObj = new CommentsHome();
+    $viewComs = $commentAdminObj->getAllComments();
+    return $viewComs;
+}
