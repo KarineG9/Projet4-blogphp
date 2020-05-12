@@ -9,10 +9,10 @@ class ItemManager extends Database
         return $this->createQuery($sql);
     }
 
-    public function readPost($itemId)
+    public function readPost($readID)
     {
-        $sql = 'SELECT * FROM posts WHERE id = ?';
-        return $this->createQuery($sql, [$itemId]);
+        $sql = "SELECT * FROM posts where id = ?";
+        return $this->createQuery($sql, [$readID]);
     }
 
     public function createPost($author, $title, $content)

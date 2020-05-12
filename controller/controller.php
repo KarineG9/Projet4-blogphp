@@ -6,10 +6,6 @@ require_once('model/LoginConnexion.php');
 require_once('model/ItemManager.php');
 require_once('model/CommentsHome.php');
 
-
-
-
-
 function listPosts()
 {
     $data = new PostManager();
@@ -77,6 +73,8 @@ function adminConnection($pseudo, $password)
 
     if ($userModel != FALSE && password_verify($password, $userModel['pass'])) {
         $_SESSION['username'] = $userModel['username'];
+        $postAdminObj = new ItemManager();
+        $posts = $postAdminObj->getAllPosts();
         require('view/frontend/homeAdmin.php');
     } else {
 
@@ -85,12 +83,6 @@ function adminConnection($pseudo, $password)
     }
 }
 
-function postsBackAdmin()
-{
-    $postAdminObj = new ItemManager();
-    $posts = $postAdminObj->getAllPosts();
-    return $posts;
-}
 
 function userNew($pseudo, $password)
 {
@@ -98,10 +90,10 @@ function userNew($pseudo, $password)
     $user = $newUserObj->newUser($pseudo, $password);
 }
 
-function seeItem()
+function seeItem($readID)
 {
     $itemObj = new ItemManager();
-    $seeItem = $itemObj->readPost($_GET['id']);
+    $seeItem = $itemObj->readPost($readID);
     require('view/frontend/viewItem.php');
 }
 
@@ -109,6 +101,8 @@ function addItem($author, $title, $content)
 {
     $itemObj = new ItemManager();
     $createItem = $itemObj->createPost($author, $title, $content);
+    $postAdminObj = new ItemManager();
+    $posts = $postAdminObj->getAllPosts();
     require('view/frontend/homeAdmin.php');
 }
 function updatetest($author, $title, $content)
@@ -131,13 +125,15 @@ function deleteItem($id)
     require('view/frontend/homeAdmin.php');
 }
 
-// function unlogingAdmin()
-// {
-//     $unlogObj = new UnlogManager();
-//     $unlog = $unlogObj->unlogAdmin();
-//     require('view/frontend/unloging.php');
-// }
+function unlogAdmin()
+{
+    require('view/frontend/unlogAdmin.php');
+}
 
+function unlogPage()
+{
+    require('view/frontend/unloging.php');
+}
 /* COMMENTS HOME */
 
 function listCommentsHome()

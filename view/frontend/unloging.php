@@ -1,9 +1,6 @@
 <?php
 
-
-session_destroy();
-header('Location: index.php');
-exit;
+require_once('controller/controller.php');
 ?>
 
 
@@ -41,14 +38,14 @@ exit;
     <div class="container admin">
         <div class="row">
             <br />
-            <form class="form-horizontal" action="delete.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $id; ?>" />
+            <form class="form-horizontal" action="index" method="GET">
+                <input type="hidden" name="id" value="unlogSubmit" />
 
-                Vous allez vous déconnecter.
+                <p><strong>Vous allez vous déconnecter.</strong></p>
 
                 <br />
                 <div class="form-actions">
-                    <button type="submit" href="index.php" class="btn btn-danger">Oui</button>
+                    <button type="submit" value="unlogSubmit" name="action" class="btn btn-danger">Oui</button>
                     <a class="btn" href="index.php?action=homeAdmin">Non</a>
                 </div>
                 <p>
@@ -56,6 +53,3 @@ exit;
             </form>
         </div>
     </div>
-</body>
-
-</html>

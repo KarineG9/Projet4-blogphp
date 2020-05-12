@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12 col-lg-offset-1">
         <div id="container-login">
-            <form id="loginform" action="index.php" method="GET">
+            <form id="loginform" action="index.php?action=homeAdmin" method="POST">
                 <h1 class="title-login">Connexion</h1>
                 <div class="col-md-6">
                     <input type="text" placeholder="Nom d'utilisateur" name="username" value="username"
@@ -15,7 +15,7 @@
                         class="form-control" required>
                 </div>
                 <br>
-                <button type="submit" name="action" class="button2" value="homeAdmin">Valider</button>
+                <button type="submit" name="action" class="button2">Valider</button>
                 <span style="color:black"><?php echo isset($_SESSION['error']) ? $_SESSION['error'] : NULL; ?></span>
                 <br>
             </form>

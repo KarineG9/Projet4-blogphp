@@ -37,8 +37,13 @@ switch ($_GET['action']) {
         loginPage();
         break;
     case 'homeAdmin':
-        adminConnection($_GET['username'], $_GET['pass']);
-        postsBackAdmin();
+        if (!isset($_SESSION['username'])) {
+            adminConnection($_POST['username'], $_POST['pass']);
+        } else {
+            $postAdminObj = new ItemManager();
+            $posts = $postAdminObj->getAllPosts();
+            require('view/frontend/homeAdmin.php');
+        }
         break;
     case 'biographie':
         biography();
@@ -47,29 +52,35 @@ switch ($_GET['action']) {
         contact();
         break;
     case 'viewItem':
-        seeItem($_GET['id']);
+        if (isset($_GET['id'])) {
+            $readID = $_GET['id'];
+            $itemObj = new ItemManager();
+            $seeItem = $itemObj->readPost($readID);
+            require('view/frontend/viewItem.php');
+        }
+
         break;
     case 'insertItem':
-        if (!empty($_GET)) {
-            require_once('view/frontend/insertPost.php');
-        }
+        require_once('view/frontend/insertPost.php');
         break;
     case 'createSubmit':
-        if (!empty($_GET)) {
-            $author = $_GET["author_post"];
-            $title = $_GET["title"];
-            $content = $_GET["content"];
+        if (!empty($_POST)) {
+            $author = $_POST["author_post"];
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            $postAdminObj = new ItemManager();
+            $posts = $postAdminObj->getAllPosts();
             addItem($author, $title, $content);
         }
         break;
     case 'updateItem':
-        if (!empty($_GET)) {
-            // $author = $_GET["author_post"];
-            // $title = $_GET["title"];
-            // $content = $_GET["content"];
-
+        if (!empty($_POST)) {
+            $author = $_POST["author_post"];
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            $itemObj = new ItemManager();
+            $updatePost = $itemObj->updatePostTest($author, $title, $content);
             require_once('view/frontend/updatePost.php');
-            updatetest($author, $title, $content);
         }
         break;
     case 'updateSubmit':
@@ -81,7 +92,7 @@ switch ($_GET['action']) {
         }
         break;
     case 'deleteItem':
-        if (!empty($_GET['id'])) {
+        if (!empty($_POST['id'])) {
             $id = ($_GET['id']);
             require_once('view/frontend/deletePost.php');
         }
@@ -93,9 +104,13 @@ switch ($_GET['action']) {
             deleteItem($id);
         }
         break;
-        // case 'unloging':
-        //     unlogingAdmin();
-        //     break;
+    case 'unloging':
+        unlogPage();
+        break;
+    case 'unlogSubmit':
+        unlogAdmin();
+        break;
+
     case 'commentAdmin':
         listCommentsHome();
         require('view/frontend/commentsHome.php');

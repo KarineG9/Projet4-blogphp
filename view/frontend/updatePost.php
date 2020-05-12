@@ -1,7 +1,7 @@
 <?php
 
 require_once('controller/controller.php');
-//$updatePost = updatetest($author, $title, $content);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ require_once('controller/controller.php');
                 <h1>Modifier un article </h1>
                 <br>
                 <div class='listItem'>
-                    <form class="form" role="form" action="index.php" method="GET">
+                    <form class="form" role="form" action="index.php?action=updateItem" method="POST">
 
                         <?php
                         while ($item = $updatePost->fetch(PDO::FETCH_ASSOC)) {
@@ -57,8 +57,7 @@ require_once('controller/controller.php');
                         <input type="text" class="form-control" id="content" name="content" placeholder="Contenu"
                             value="<?php echo $item[$content] ?>">
 
-                        <button type="submit" class="btn btn-outline-success" value="updateSubmit"
-                            name="action">Modifier</button>
+                        <button type="submit" class="btn btn-outline-success" name="action">Modifier</button>
                         <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
                         <?php
                         }
