@@ -2,7 +2,7 @@
 require_once('controller/controller.php');
 
 $viewComs = listCommentsHome();
-
+$viewCommW = listWarningComments();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $viewComs = listCommentsHome();
     <div class="container admin">
         <div class="row">
             <div class="title-group">
-                <h1 class="titleadmin">Liste des Commentaires </h1>
+                <h1 class="titleadmin">Listes des commentaires</h1>
             </div>
 
             <table class=" table table-striped table-bordered">
@@ -63,14 +63,6 @@ $viewComs = listCommentsHome();
                         <td> <?php echo $item['comment'] ?></td>
                         <td><?php echo $item['comment_date'] ?></td>
 
-                        <!-- <td width=300>
-                            <a class="btn btn-outline-info btn-md"
-                                href="index.php?action=viewItem&amp;id=' . $item['id']">Lire</a>
-                            <a class="btn btn-outline-dark btn-md"
-                                href="index.php?action=updateItem&amp;id=' . $item['id']">Modifier</a>
-                            <a class="btn btn-outline-danger btn-md"
-                                href="index.php?action=deleteItem&amp;id=' . $item['id']">Supprimer</a>
-                        </td> -->
                     </tr>
 
                     <?php
@@ -81,5 +73,44 @@ $viewComs = listCommentsHome();
                     ?>
                 </tbody>
             </table>
+            <br>
+
+            <div class="title-group">
+                <h2 class="titleadmin">Commentaires signalés</h2>
+            </div>
+            <table class=" table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Auteur</th>
+                        <th>Commentaire</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php
+                    while ($item = $viewCommW->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                    <tr>
+                        <td> <?php echo $item['author'] ?></td>
+                        <td> <?php echo $item['comment'] ?></td>
+                        <td><?php echo $item['comment_date'] ?></td>
+                        <td width=300>
+                            <a class="btn btn-outline-danger btn-md"
+                                href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
+                            <a class="btn btn-outline-dark btn-md"
+                                href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Poster</a></td>
+                    </tr>
+
+                    <?php
+                    }
+                    $viewCommW->closeCursor();
+
+
+                    ?>
+                </tbody>
+            </table>
+
         </div>
     </div>

@@ -52,13 +52,9 @@ switch ($_GET['action']) {
         contact();
         break;
     case 'viewItem':
-        if (isset($_GET['id'])) {
-            $readID = $_GET['id'];
-            $itemObj = new ItemManager();
-            $seeItem = $itemObj->readPost($readID);
-            require('view/frontend/viewItem.php');
-        }
-
+        $itemObj = new ItemManager();
+        $seeItem = $itemObj->readPost($_GET['id']);
+        seeItem($_GET['id']);
         break;
     case 'insertItem':
         require_once('view/frontend/insertPost.php');
@@ -74,36 +70,37 @@ switch ($_GET['action']) {
         }
         break;
     case 'updateItem':
-        if (!empty($_POST)) {
-            $author = $_POST["author_post"];
-            $title = $_POST["title"];
-            $content = $_POST["content"];
-            $itemObj = new ItemManager();
-            $updatePost = $itemObj->updatePostTest($author, $title, $content);
-            require_once('view/frontend/updatePost.php');
+        if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
+            viewPostUpdate($id);
         }
         break;
     case 'updateSubmit':
-        if (!empty($_GET)) {
-            $author = $_GET["author_post"];
-            $title = $_GET["title"];
-            $content = $_GET["content"];
-            updateItem($author, $title, $content);
+        if (!empty($_POST)) {
+            $id = $_POST["id"];
+            $author = $_POST["author_post"];
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            updateItem($id, $author, $title, $content);
         }
         break;
+
     case 'deleteItem':
-        if (!empty($_POST['id'])) {
-            $id = ($_GET['id']);
+        if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
             require_once('view/frontend/deletePost.php');
         }
-
         break;
+
     case 'deleteSubmit':
-        if (!empty($_GET['id'])) {
-            $id = ($_GET['id']);
+        if (!empty($_POST['id'])) {
+            $id = $_POST['id'];
+            $postAdminObj = new ItemManager();
+            $posts = $postAdminObj->getAllPosts();
             deleteItem($id);
         }
         break;
+
     case 'unloging':
         unlogPage();
         break;
@@ -113,6 +110,7 @@ switch ($_GET['action']) {
 
     case 'commentAdmin':
         listCommentsHome();
+        listWarningComments();
         require('view/frontend/commentsHome.php');
         break;
     default:

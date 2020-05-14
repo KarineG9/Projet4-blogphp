@@ -8,4 +8,10 @@ class CommentsHome extends Database
         $sql = 'SELECT * FROM comments ORDER BY comment_date DESC';
         return $this->createQuery($sql);
     }
+
+    public function getWarningComments()
+    {
+        $sql = 'SELECT * FROM comments WHERE warning > 0';
+        return $this->createQuery($sql);
+    }
 }

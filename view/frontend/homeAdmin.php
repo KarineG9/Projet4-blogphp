@@ -61,17 +61,20 @@ require_once('controller/controller.php');
                     <?php
                     while ($item = $posts->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                        <tr>
-                            <td><?php echo $item['author_post'] ?></td>
-                            <td> <?php echo $item['title'] ?></td>
-                            <td><?php echo $item['content'] ?></td>
-                            <td><?php echo $item['creation_date'] ?></td>
-                            <td width=300>
-                                <a class="btn btn-outline-info btn-md" href="index.php?action=viewItem&amp;id=' . $item['id']">Lire</a>
-                                <a class="btn btn-outline-dark btn-md" href="index.php?action=updateItem&amp;id=' . $item['id']">Modifier</a>
-                                <a class="btn btn-outline-danger btn-md" href="index.php?action=deleteItem&amp;id=' . $item['id']">Supprimer</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $item['author_post'] ?></td>
+                        <td> <?php echo $item['title'] ?></td>
+                        <td><?php echo $item['content'] ?></td>
+                        <td><?php echo $item['creation_date'] ?></td>
+                        <td width=300>
+                            <a class="btn btn-outline-info btn-md"
+                                href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
+                            <a class="btn btn-outline-dark btn-md"
+                                href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Modifier</a>
+                            <a class="btn btn-outline-danger btn-md"
+                                href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
+                        </td>
+                    </tr>
 
                     <?php
                     }

@@ -57,11 +57,11 @@ function loginPage()
 }
 function warningC($commentID)
 {
-
     $commentW = new CommentManager();
     $commW = $commentW->warningComment($commentID);
-
-    echo '<script>alert("Commentaire signalé !")</script>';
+    if ($commW == TRUE) {
+        echo '<script>alert("Commentaire signalé !")</script>';
+    }
 }
 
 // PARTIE BACK OFFICE ADMIN //
@@ -90,10 +90,10 @@ function userNew($pseudo, $password)
     $user = $newUserObj->newUser($pseudo, $password);
 }
 
-function seeItem($readID)
+function seeItem()
 {
     $itemObj = new ItemManager();
-    $seeItem = $itemObj->readPost($readID);
+    $seeItem = $itemObj->readPost($_GET['id']);
     require('view/frontend/viewItem.php');
 }
 
@@ -105,23 +105,29 @@ function addItem($author, $title, $content)
     $posts = $postAdminObj->getAllPosts();
     require('view/frontend/homeAdmin.php');
 }
-function updatetest($author, $title, $content)
+
+function viewPostUpdate($id)
 {
     $itemObj = new ItemManager();
-    $updatePost = $itemObj->updatePostTest($author, $title, $content);
+    $seeItem = $itemObj->readPost($id);
     require('view/frontend/updatePost.php');
 }
-function updateItem($author, $title, $content)
+function updateItem($id, $author, $title, $content)
 {
+
     $itemObj = new ItemManager();
-    $updateItem = $itemObj->updatePost($author, $title, $content);
+    $updateItem = $itemObj->updatePost($id, $author, $title, $content);
     require('view/frontend/homeAdmin.php');
 }
 
 function deleteItem($id)
 {
+
     $itemObj = new ItemManager();
-    $deleteItem = $itemObj->deletePost($id);
+    $itemObj->deletePost($id);
+
+    $postAdminObj = new ItemManager();
+    $posts = $postAdminObj->getAllPosts();
     require('view/frontend/homeAdmin.php');
 }
 
@@ -141,4 +147,11 @@ function listCommentsHome()
     $commentAdminObj = new CommentsHome();
     $viewComs = $commentAdminObj->getAllComments();
     return $viewComs;
+}
+
+function listWarningComments()
+{
+    $commentAdminObj = new CommentsHome();
+    $viewCommW = $commentAdminObj->getWarningComments();
+    return $viewCommW;
 }

@@ -9,10 +9,10 @@ class ItemManager extends Database
         return $this->createQuery($sql);
     }
 
-    public function readPost($readID)
+    public function readPost($idItem)
     {
         $sql = "SELECT * FROM posts where id = ?";
-        return $this->createQuery($sql, [$readID]);
+        return $this->createQuery($sql, [$idItem]);
     }
 
     public function createPost($author, $title, $content)
@@ -21,22 +21,17 @@ class ItemManager extends Database
         return $this->createQuery($sql, [$author, $title, $content]);
     }
 
-    public function updatePost($author, $title, $content)
+    public function updatePost($id, $author, $title, $content)
     {
-        $sql = "UPDATE posts SET author_post = ?, title = ?, content = ?,
-        WHERE id = ? ";
-        return $this->createQuery($sql, [$author, $title, $content]);
+        $sql = "UPDATE posts SET author_post = ?, title = ?, content = ? WHERE id = ? ";
+        return $this->createQuery($sql, [$id, $author, $title, $content]);
     }
 
-    public function updatePostTest($author, $title, $content)
-    {
-        $sql = "SELECT author_post, title, content FROM posts WHERE id = ?";
-        return $this->createQuery($sql, [$author, $title, $content]);
-    }
+
 
     public function deletePost($id)
     {
-        $sql = "DELETE FROM posts where id = ?";
+        $sql = "DELETE FROM posts  WHERE id = ?";
         return $this->createQuery($sql, [$id]);
     }
 }

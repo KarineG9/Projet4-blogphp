@@ -44,22 +44,16 @@ require_once('controller/controller.php');
                 <br>
                 <div class='listItem'>
                     <?php
-                    while ($item = $seeItem->fetch(PDO::FETCH_ASSOC)) {
+                    $item = $seeItem->fetch(PDO::FETCH_ASSOC);
+
                     ?>
-                    <label>Auteur</label>
-                    <p><?php echo $item['author_post'] ?></p>
-                    <label>Titre</label>
-                    <p><?php echo $item['title'] ?></p>
-                    <label>Contenu</label>
-                    <p><?php echo $item['content'] ?></p>
-                    <label>Date</label>
-                    <p><?php echo $item['creation_date'] ?></p>
-                    <?php
-                    } ?>
+                    <label>Auteur</label><?php echo ' ' . $item['author_post']; ?>
+                    <label>Titre</label><?php echo ' ' . $item['title']; ?>
+                    <label>Contenu</label><?php echo ' ' . $item['content']; ?>
+                    <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
                 </div>
                 <br>
                 <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
-
             </div>
         </div>
     </div>

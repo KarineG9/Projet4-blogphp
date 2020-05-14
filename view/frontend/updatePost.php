@@ -31,7 +31,6 @@ require_once('controller/controller.php');
                 <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
                 <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
-
             </ul>
         </nav>
     </header>
@@ -42,31 +41,27 @@ require_once('controller/controller.php');
                 <h1>Modifier un article </h1>
                 <br>
                 <div class='listItem'>
-                    <form class="form" role="form" action="index.php?action=updateItem" method="POST">
 
-                        <?php
-                        while ($item = $updatePost->fetch(PDO::FETCH_ASSOC)) {
 
-                        ?>
 
+                    <form class="form" role="form" action='index.php?action=updateSubmit' method="POST">
                         <label for="author">Auteur</label>
-                        <input type="text" class="form-control" id="author_id" name="author_post" placeholder="Auteur"
-                            value="<?php echo $item[$author] ?>">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Titre"
-                            value="<?php echo $item[$title] ?>">
-                        <input type="text" class="form-control" id="content" name="content" placeholder="Contenu"
-                            value="<?php echo $item[$content] ?>">
-
-                        <button type="submit" class="btn btn-outline-success" name="action">Modifier</button>
-                        <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
-                        <?php
-                        }
-                        $updatePost->closeCursor();
-
-
-                        ?>
-                    </form>
+                        <input type="text" class="form-control" id="author_id" name="author_post" placeholder=""
+                            value=" <?php echo !empty($author) ? $author : ''; ?>">
+                        <label for=" author">Titre</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder=""
+                            value="<?php echo !empty($title) ? $title : ''; ?>">
+                        <label for=" author">Contenu</label>
+                        <textarea type="text" class="form-control" id="content" name="content" rows="5" cols="33"
+                            placeholder="" value="<?php echo !empty($content) ? $content : ''; ?> "></textarea>
                 </div>
+                <br>
+                <button type="submit" class="btn btn-outline-success" name="action">Modifier</button>
+                <br>
+                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
+                </form>
+
             </div>
         </div>
+    </div>
     </div>

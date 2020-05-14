@@ -1,7 +1,6 @@
 <?php
 require_once('controller/controller.php');
 
-//$deleteItem = deleteItem($id);
 ?>
 
 <!DOCTYPE html>
@@ -42,13 +41,12 @@ require_once('controller/controller.php');
                 <br>
                 <div class="container admin">
                     <div class="row">
-                        <form class="form-horizontal" action="index.php" method="GET">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                            <p class="alert alert-warning">Etes vous sur de supprimer cet article ?</p>
+                        <form class="form-horizontal" role="form" action="index.php?action=deleteSubmit" method="POST">
+                            <input type="hidden" id="id" name="id" value="<?php echo $id ?>" />
+                            <p class="alert alert-danger">Etes vous sur de supprimer cet article ?</p>
                             <br />
                             <div class="form-actions">
-                                <button type="submit" value="deleteSubmit" name="action"
-                                    class="btn btn-danger">Oui</button>
+                                <button type="submit" name="action" value="action" class="btn btn-danger">Oui</button>
                                 <a class="btn" href="index.php?action=homeAdmin">Non</a>
                             </div>
                         </form>
