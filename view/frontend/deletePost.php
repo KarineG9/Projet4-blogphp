@@ -43,7 +43,7 @@ require_once('controller/controller.php');
                     <div class="row">
                         <form class="form-horizontal" role="form" action="index.php?action=deleteSubmit" method="POST">
                             <input type="hidden" id="id" name="id" value="<?php echo $id ?>" />
-                            <p class="alert alert-danger">Etes vous sur de supprimer cet article ?</p>
+                            <p class="alert alert-danger">Confirmez-vous la suppression ?</p>
                             <br />
                             <div class="form-actions">
                                 <button type="submit" name="action" value="action" class="btn btn-danger">Oui</button>

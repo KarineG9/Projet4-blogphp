@@ -70,28 +70,21 @@ switch ($_GET['action']) {
         }
         break;
     case 'updateItem':
-        if (!empty($_GET['id'])) {
-            $id = $_GET['id'];
-            viewPostUpdate($id);
-        }
+        viewPostUpdate();
         break;
     case 'updateSubmit':
-        if (!empty($_POST)) {
-            $id = $_POST["id"];
-            $author = $_POST["author_post"];
-            $title = $_POST["title"];
-            $content = $_POST["content"];
-            updateItem($id, $author, $title, $content);
-        }
+        $id = $_POST['id'];
+        $author = $_POST["author_post"];
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        updateItem($id, $author, $title, $content);
         break;
-
     case 'deleteItem':
         if (!empty($_GET['id'])) {
             $id = $_GET['id'];
             require_once('view/frontend/deletePost.php');
         }
         break;
-
     case 'deleteSubmit':
         if (!empty($_POST['id'])) {
             $id = $_POST['id'];
@@ -100,19 +93,32 @@ switch ($_GET['action']) {
             deleteItem($id);
         }
         break;
-
     case 'unloging':
         unlogPage();
         break;
     case 'unlogSubmit':
         unlogAdmin();
         break;
-
     case 'commentAdmin':
         listCommentsHome();
         listWarningComments();
         require('view/frontend/commentsHome.php');
         break;
+    case 'deleteCom':
+        if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
+            require_once('view/frontend/deleteCom.php');
+        }
+        break;
+    case 'deleteComSubmit':
+        if (!empty($_POST['id'])) {
+            $id = $_POST['id'];
+            $commentAdminObj = new CommentsHome();
+            $viewComs = $commentAdminObj->getAllComments();
+            deleteOneCom($id);
+        }
+        break;
+
     default:
         home();
 }

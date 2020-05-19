@@ -316,6 +316,13 @@ textarea{
     font-size:18px;
     font-weight: bold;
 }
+
+#synopsis{
+    background-color: black;
+    padding: 2em;
+    margin-bottom: 1em;
+    color: white;
+}
 /*CONNEXION PAGE*/
 
 #container-login{

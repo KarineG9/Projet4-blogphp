@@ -59,9 +59,7 @@ function warningC($commentID)
 {
     $commentW = new CommentManager();
     $commW = $commentW->warningComment($commentID);
-    if ($commW == TRUE) {
-        echo '<script>alert("Commentaire signalé !")</script>';
-    }
+    header('Location: index.php');
 }
 
 // PARTIE BACK OFFICE ADMIN //
@@ -106,23 +104,26 @@ function addItem($author, $title, $content)
     require('view/frontend/homeAdmin.php');
 }
 
-function viewPostUpdate($id)
+function viewPostUpdate()
 {
-    $itemObj = new ItemManager();
-    $seeItem = $itemObj->readPost($id);
-    require('view/frontend/updatePost.php');
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $itemObj = new ItemManager();
+        $seeItem = $itemObj->readPost($_GET['id']);
+        require('view/frontend/updatePost.php');
+    }
 }
 function updateItem($id, $author, $title, $content)
 {
-
     $itemObj = new ItemManager();
     $updateItem = $itemObj->updatePost($id, $author, $title, $content);
+    $postAdminObj = new ItemManager();
+    $posts = $postAdminObj->getAllPosts();
     require('view/frontend/homeAdmin.php');
 }
 
 function deleteItem($id)
 {
-
     $itemObj = new ItemManager();
     $itemObj->deletePost($id);
 
@@ -154,4 +155,12 @@ function listWarningComments()
     $commentAdminObj = new CommentsHome();
     $viewCommW = $commentAdminObj->getWarningComments();
     return $viewCommW;
+}
+
+function deleteOneCom($id)
+{
+    $commentAdminObj = new CommentsHome();
+    $deleteCom = $commentAdminObj->deleteCom($id);
+    return $deleteCom;
+    require('view/frontend/commentsHome.php');
 }

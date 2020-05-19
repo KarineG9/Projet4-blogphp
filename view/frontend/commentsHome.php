@@ -58,18 +58,15 @@ $viewCommW = listWarningComments();
                     <?php
                     while ($item = $viewComs->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                    <tr>
-                        <td> <?php echo $item['author'] ?></td>
-                        <td> <?php echo $item['comment'] ?></td>
-                        <td><?php echo $item['comment_date'] ?></td>
-
-                    </tr>
+                        <tr>
+                            <td> <?php echo $item['author'] ?></td>
+                            <td width=450><?php echo (substr($item['comment'], 0, 120)); ?></td>
+                            <td><?php echo $item['comment_date'] ?></td>
+                        </tr>
 
                     <?php
                     }
                     $viewComs->closeCursor();
-
-
                     ?>
                 </tbody>
             </table>
@@ -92,25 +89,20 @@ $viewCommW = listWarningComments();
                     <?php
                     while ($item = $viewCommW->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                    <tr>
-                        <td> <?php echo $item['author'] ?></td>
-                        <td> <?php echo $item['comment'] ?></td>
-                        <td><?php echo $item['comment_date'] ?></td>
-                        <td width=300>
-                            <a class="btn btn-outline-danger btn-md"
-                                href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
-                            <a class="btn btn-outline-dark btn-md"
-                                href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Poster</a></td>
-                    </tr>
+                        <tr>
+                            <td> <?php echo $item['author'] ?></td>
+                            <td width=450><?php echo (substr($item['comment'], 0, 120)); ?></td>
+                            <td><?php echo $item['comment_date'] ?></td>
+                            <td width=200>
+                                <a class="btn btn-outline-danger btn-md" href="index.php?action=deleteCom&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
+                                <a class="btn btn-outline-dark btn-md" href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Poster</a></td>
+                        </tr>
 
                     <?php
                     }
                     $viewCommW->closeCursor();
-
-
                     ?>
                 </tbody>
             </table>
-
         </div>
     </div>

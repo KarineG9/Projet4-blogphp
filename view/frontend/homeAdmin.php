@@ -62,11 +62,11 @@ require_once('controller/controller.php');
                     while ($item = $posts->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
-                        <td><?php echo $item['author_post'] ?></td>
-                        <td> <?php echo $item['title'] ?></td>
-                        <td><?php echo $item['content'] ?></td>
-                        <td><?php echo $item['creation_date'] ?></td>
-                        <td width=300>
+                        <td width=100><?php echo $item['author_post'] ?></td>
+                        <td width=100> <?php echo $item['title'] ?></td>
+                        <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
+                        <td width=100><?php echo $item['creation_date'] ?></td>
+                        <td width=170>
                             <a class="btn btn-outline-info btn-md"
                                 href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
                             <a class="btn btn-outline-dark btn-md"

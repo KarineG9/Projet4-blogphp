@@ -38,14 +38,14 @@ require_once('controller/controller.php');
     <div class="container admin">
         <div class="row">
             <br />
-            <form class="form-horizontal" action="index" method="GET">
+            <form class="form-horizontal" action="index" method="POST">
                 <input type="hidden" name="id" value="unlogSubmit" />
 
                 <p><strong>Vous allez vous déconnecter.</strong></p>
 
                 <br />
                 <div class="form-actions">
-                    <button type="submit" value="unlogSubmit" name="action" class="btn btn-danger">Oui</button>
+                    <button type="submit" value="unlogSubmit" name="action" class="btn btn-outline-warning">Oui</button>
                     <a class="btn" href="index.php?action=homeAdmin">Non</a>
                 </div>
                 <p>

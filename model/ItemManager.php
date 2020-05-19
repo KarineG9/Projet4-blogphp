@@ -21,9 +21,10 @@ class ItemManager extends Database
         return $this->createQuery($sql, [$author, $title, $content]);
     }
 
+
     public function updatePost($id, $author, $title, $content)
     {
-        $sql = "UPDATE posts SET author_post = ?, title = ?, content = ? WHERE id = ? ";
+        $sql = "UPDATE posts SET author_post = '$author', title = '$title', content = '$content' WHERE id = '$id' ";
         return $this->createQuery($sql, [$id, $author, $title, $content]);
     }
 

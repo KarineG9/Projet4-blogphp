@@ -14,4 +14,10 @@ class CommentsHome extends Database
         $sql = 'SELECT * FROM comments WHERE warning > 0';
         return $this->createQuery($sql);
     }
+
+    public function deleteCom($id)
+    {
+        $sql = "DELETE FROM comments  WHERE id = ?";
+        return $this->createQuery($sql, [$id]);
+    }
 }
