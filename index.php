@@ -2,7 +2,8 @@
 
 session_start();
 require __DIR__ . '/vendor/autoload.php';
-require('controller/controller.php');
+require('controller/ControllerFront.php');
+require('controller/ControllerBack.php');
 
 
 if (false === isset($_GET['action'])) {
@@ -44,7 +45,7 @@ switch ($_GET['action']) {
         } else {
             $postAdminObj = new ItemManager();
             $posts = $postAdminObj->getAllPosts();
-            require('view/frontend/homeAdmin.php');
+            require('view/backend/homeAdmin.php');
         }
         break;
     case 'biographie':
@@ -59,7 +60,7 @@ switch ($_GET['action']) {
         seeItem($_GET['id']);
         break;
     case 'insertItem':
-        require_once('view/frontend/insertPost.php');
+        require_once('view/backend/insertPost.php');
         break;
     case 'createSubmit':
         if (!empty($_POST)) {
@@ -84,7 +85,7 @@ switch ($_GET['action']) {
     case 'deleteItem':
         if (!empty($_GET['id'])) {
             $id = $_GET['id'];
-            require_once('view/frontend/deletePost.php');
+            require_once('view/backend/deletePost.php');
         }
         break;
     case 'deleteSubmit':
@@ -104,12 +105,12 @@ switch ($_GET['action']) {
     case 'commentAdmin':
         listCommentsHome();
         listWarningComments();
-        require('view/frontend/commentsHome.php');
+        require('view/backend/commentsHome.php');
         break;
     case 'deleteCom':
         if (!empty($_GET['id'])) {
             $id = $_GET['id'];
-            require_once('view/frontend/deleteCom.php');
+            require_once('view/backend/deleteCom.php');
         }
         break;
     case 'deleteComSubmit':

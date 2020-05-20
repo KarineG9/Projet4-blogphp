@@ -1,68 +1,10 @@
 <?php
-require_once('model/Database.php');
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/LoginConnexion.php');
-require_once('model/ItemManager.php');
-require_once('model/CommentsHome.php');
-
-function listPosts()
-{
-    $data = new PostManager();
-    $posts = $data->getPosts();
-    require('view/frontend/listPostsView.php');
-}
-
-function post()
-{
-
-    $data = new PostManager();
-    $posts = $data->getPost($_GET['id']);
-
-    $commentObj = new CommentManager();
-    $comments = $commentObj->getComments($_GET['id']);
-    require('view/frontend/postView.php');
-}
-
-function addComment($postId, $author, $comment)
-{
-    $commentObj = new CommentManager();
-
-    $sql = $commentObj->postComment($postId, $author, $comment);
-
-    if ($sql === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    } else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
-
-function home()
-{
-    require('view/frontend/accueil.php');
-}
-
-function biography()
-{
-    require('view/frontend/bio.php');
-}
-
-function contact()
-{
-    require('view/frontend/contact.php');
-}
-function loginPage()
-{
-    require('view/frontend/loginAdmin.php');
-}
-function warningC($commentID, $id)
-{
-    $commentW = new CommentManager();
-    $commW = $commentW->warningComment($commentID);
-    header('Location: index.php?action=post&id=' . $id);
-}
-
-// PARTIE BACK OFFICE ADMIN //
+require_once('ModelFront/PostManager.php');
+require_once('ModelFront/CommentManager.php');
+require_once('ModelFront/LoginConnexion.php');
+require_once('ModelBack/Database.php');
+require_once('ModelBack/ItemManager.php');
+require_once('ModelBack/CommentsHome.php');
 
 function adminConnection($pseudo, $password)
 {
@@ -92,7 +34,7 @@ function seeItem()
 {
     $itemObj = new ItemManager();
     $seeItem = $itemObj->readPost($_GET['id']);
-    require('view/frontend/viewItem.php');
+    require('view/backend/viewItem.php');
 }
 
 function addItem($author, $title, $content)
@@ -101,7 +43,7 @@ function addItem($author, $title, $content)
     $createItem = $itemObj->createPost($author, $title, $content);
     $postAdminObj = new ItemManager();
     $posts = $postAdminObj->getAllPosts();
-    require('view/frontend/homeAdmin.php');
+    require('view/backend/homeAdmin.php');
 }
 
 function viewPostUpdate()
@@ -110,7 +52,7 @@ function viewPostUpdate()
         $id = $_GET['id'];
         $itemObj = new ItemManager();
         $seeItem = $itemObj->readPost($_GET['id']);
-        require('view/frontend/updatePost.php');
+        require('view/backend/updatePost.php');
     }
 }
 function updateItem($id, $author, $title, $content)
@@ -119,7 +61,7 @@ function updateItem($id, $author, $title, $content)
     $updateItem = $itemObj->updatePost($id, $author, $title, $content);
     $postAdminObj = new ItemManager();
     $posts = $postAdminObj->getAllPosts();
-    require('view/frontend/homeAdmin.php');
+    require('view/backend/homeAdmin.php');
 }
 
 function deleteItem($id)
@@ -129,17 +71,17 @@ function deleteItem($id)
 
     $postAdminObj = new ItemManager();
     $posts = $postAdminObj->getAllPosts();
-    require('view/frontend/homeAdmin.php');
+    require('view/backend/homeAdmin.php');
 }
 
 function unlogAdmin()
 {
-    require('view/frontend/unlogAdmin.php');
+    require('view/backend/unlogAdmin.php');
 }
 
 function unlogPage()
 {
-    require('view/frontend/unloging.php');
+    require('view/backend/unloging.php');
 }
 /* COMMENTS HOME */
 
@@ -165,12 +107,12 @@ function deleteOneCom($id)
     $commentAdminObj = new CommentsHome();
     $viewComs = $commentAdminObj->getAllComments();
 
-    require('view/frontend/commentsHome.php');
+    require('view/backend/commentsHome.php');
 }
 
 function validComWarning($IDcomment)
 {
     $commentAdminObj = new CommentsHome();
     $validWcom = $commentAdminObj->validWarningComment($IDcomment);
-    require('view/frontend/commentsHome.php');
+    require('view/backend/commentsHome.php');
 }
