@@ -55,11 +55,11 @@ function loginPage()
 {
     require('view/frontend/loginAdmin.php');
 }
-function warningC($commentID)
+function warningC($commentID, $id)
 {
     $commentW = new CommentManager();
     $commW = $commentW->warningComment($commentID);
-    header('Location: index.php');
+    header('Location: index.php?action=post&id=' . $id);
 }
 
 // PARTIE BACK OFFICE ADMIN //
@@ -161,6 +161,16 @@ function deleteOneCom($id)
 {
     $commentAdminObj = new CommentsHome();
     $deleteCom = $commentAdminObj->deleteCom($id);
-    return $deleteCom;
+
+    $commentAdminObj = new CommentsHome();
+    $viewComs = $commentAdminObj->getAllComments();
+
+    require('view/frontend/commentsHome.php');
+}
+
+function validComWarning($IDcomment)
+{
+    $commentAdminObj = new CommentsHome();
+    $validWcom = $commentAdminObj->validWarningComment($IDcomment);
     require('view/frontend/commentsHome.php');
 }

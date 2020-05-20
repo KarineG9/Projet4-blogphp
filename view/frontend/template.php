@@ -19,7 +19,8 @@
     <div class="container-body">
         <header>
             <div class="logo-header">
-                <p class='title-header'>Jean Forteroche</p>
+
+                <p><a href="index.php">Jean Forteroche</a></p>
             </div>
             <nav>
                 <ul class="nav">

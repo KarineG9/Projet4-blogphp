@@ -23,10 +23,9 @@ require_once('controller/controller.php');
 <body>
 
     <header>
-        <div class="logo-header">
-            <p class='title-header'>Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?>
-            </p>
 
+        <div class="logo-header">
+            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
         </div>
         <nav>
             <ul class="nav">
@@ -61,20 +60,17 @@ require_once('controller/controller.php');
                     <?php
                     while ($item = $posts->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                    <tr>
-                        <td width=100><?php echo $item['author_post'] ?></td>
-                        <td width=100> <?php echo $item['title'] ?></td>
-                        <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
-                        <td width=100><?php echo $item['creation_date'] ?></td>
-                        <td width=170>
-                            <a class="btn btn-outline-info btn-md"
-                                href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
-                            <a class="btn btn-outline-dark btn-md"
-                                href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Modifier</a>
-                            <a class="btn btn-outline-danger btn-md"
-                                href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td width=100><?php echo $item['author_post'] ?></td>
+                            <td width=100> <?php echo $item['title'] ?></td>
+                            <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
+                            <td width=100><?php echo $item['creation_date'] ?></td>
+                            <td width=170>
+                                <a class="btn btn-outline-info btn-md" href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
+                                <a class="btn btn-outline-dark btn-md" href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Modifier</a>
+                                <a class="btn btn-outline-danger btn-md" href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
+                            </td>
+                        </tr>
 
                     <?php
                     }

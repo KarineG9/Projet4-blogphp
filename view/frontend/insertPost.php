@@ -17,9 +17,9 @@ require_once('controller/controller.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-    tinymce.init({
-        selector: '#wysiwyg'
-    });
+        tinymce.init({
+            selector: '#wysiwyg'
+        });
     </script>
     <link rel="stylesheet" href="public/css/style.css" />
     <link rel="icon" type="img" href="public/css/images/logo.png" />
@@ -30,7 +30,8 @@ require_once('controller/controller.php');
 
     <header>
         <div class="logo-header">
-            <p class='title-header'>Bienvenue</p>
+            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
+
         </div>
         <nav>
             <ul class="nav">
@@ -54,8 +55,7 @@ require_once('controller/controller.php');
                         <label for="author">Titre</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="">
                         <label for="author">Contenu</label>
-                        <textarea type="text" class="form-control" id="wysiwyg" name="content" rows="5" cols="33"
-                            placeholder=""></textarea>
+                        <textarea type="text" class="form-control" id="wysiwyg" name="content" rows="5" cols="33" placeholder=""></textarea>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-outline-success" name="action">Ajouter</button>

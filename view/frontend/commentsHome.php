@@ -25,8 +25,7 @@ $viewCommW = listWarningComments();
 
     <header>
         <div class="logo-header">
-            <p class='title-header'>Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?>
-            </p>
+            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
 
         </div>
         <nav>
@@ -45,7 +44,7 @@ $viewCommW = listWarningComments();
                 <h1 class="titleadmin">Listes des commentaires</h1>
             </div>
 
-            <table class=" table table-striped table-bordered">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Auteur</th>
@@ -95,7 +94,7 @@ $viewCommW = listWarningComments();
                             <td><?php echo $item['comment_date'] ?></td>
                             <td width=200>
                                 <a class="btn btn-outline-danger btn-md" href="index.php?action=deleteCom&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
-                                <a class="btn btn-outline-dark btn-md" href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Poster</a></td>
+                                <a class="btn btn-outline-dark btn-md" href="index.php?action=acceptCom&amp;idComWarning=<?php echo $item['id'] ?>">Poster</a></td>
                         </tr>
 
                     <?php

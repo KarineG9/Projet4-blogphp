@@ -20,4 +20,9 @@ class CommentsHome extends Database
         $sql = "DELETE FROM comments  WHERE id = ?";
         return $this->createQuery($sql, [$id]);
     }
+    public function validWarningComment($IDcomment)
+    {
+        $sql = 'UPDATE comments SET warning = FALSE WHERE id = ?';
+        return $this->createQuery($sql, [$IDcomment]);
+    }
 }

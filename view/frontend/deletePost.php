@@ -23,7 +23,8 @@ require_once('controller/controller.php');
 
     <header>
         <div class="logo-header">
-            <p class='title-header'>Bienvenue</p>
+            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
+
         </div>
         <nav>
             <ul class="nav">

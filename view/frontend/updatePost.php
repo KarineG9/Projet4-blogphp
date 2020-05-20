@@ -17,9 +17,9 @@ require_once('controller/controller.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-    tinymce.init({
-        selector: '#wysiwyg'
-    });
+        tinymce.init({
+            selector: '#wysiwyg'
+        });
     </script>
     <link rel="stylesheet" href="public/css/style.css" />
     <link rel="icon" type="img" href="public/css/images/logo.png" />
@@ -30,7 +30,8 @@ require_once('controller/controller.php');
 
     <header>
         <div class="logo-header">
-            <p class='title-header'>Bienvenue</p>
+            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
+
         </div>
         <nav>
             <ul class="nav">
@@ -48,7 +49,6 @@ require_once('controller/controller.php');
                 <br>
                 <div class='listItem'>
 
-
                     <?php
                     $item = $seeItem->fetch(PDO::FETCH_ASSOC);
 
@@ -56,14 +56,11 @@ require_once('controller/controller.php');
                     <form class="form" role="form" action='index.php?action=updateSubmit' method="POST">
                         <input type="hidden" id="id" name="id" value="<?php echo $item['id'] ?>" />
                         <label>Auteur</label>
-                        <input type="text" class="form-control" id="author_id" name="author_post" placeholder=""
-                            value="<?php echo $item['author_post']; ?>" />
+                        <input type="text" class="form-control" id="author_id" name="author_post" placeholder="" value="<?php echo $item['author_post']; ?>" />
                         <label>Titre</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder=""
-                            value="<?php echo $item['title']; ?>" />
+                        <input type="text" class="form-control" id="title" name="title" placeholder="" value="<?php echo $item['title']; ?>" />
                         <label>Contenu</label>
-                        <textarea type="text" class="form-control" id="wysiwyg" name="content" rows="5" cols="33"
-                            placeholder=""><?php echo $item['content']; ?></textarea>
+                        <textarea type="text" class="form-control" id="wysiwyg" name="content" rows="5" cols="33" placeholder=""><?php echo $item['content']; ?></textarea>
 
                 </div>
                 <br>

@@ -15,9 +15,9 @@
         <em>le <?= $data['creation_date_fr'] ?></em>
     </h3>
 
-    <p class="content-post">
-        <?= nl2br(htmlspecialchars_decode($data['content'])) ?>
-    </p>
+    <div class="content-post">
+        <p><?= nl2br(htmlspecialchars_decode($data['content'])) ?></p>
+    </div>
 
 </div>
 
@@ -30,13 +30,13 @@
     while ($comment = $comments->fetch(PDO::FETCH_ASSOC)) {
     ?>
 
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
-        <a href="index.php?action=warningComment&amp;idWarningC=<?= $comment['id'] ?>">(signaler)</a>
-        <span style="color:red"><?php echo isset($alert) ? $alert : NULL; ?></span>
-    </p>
+        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
+            <a href="index.php?action=warningComment&amp;idWarningC=<?= $comment['id'] ?>&amp;idPostC=<?= $data['id'] ?>">(signaler)</a>
+            <span style="color:red"><?php echo isset($alert) ? $alert : NULL; ?></span>
+        </p>
 
 
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
 
     <?php

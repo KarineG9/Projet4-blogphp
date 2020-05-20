@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+require __DIR__ . '/vendor/autoload.php';
 require('controller/controller.php');
 
 
@@ -31,7 +33,7 @@ switch ($_GET['action']) {
         }
         break;
     case 'warningComment':
-        warningC($_GET['idWarningC']);
+        warningC($_GET['idWarningC'], $_GET['idPostC']);
         break;
     case 'connexion':
         loginPage();
@@ -117,6 +119,9 @@ switch ($_GET['action']) {
             $viewComs = $commentAdminObj->getAllComments();
             deleteOneCom($id);
         }
+        break;
+    case 'acceptCom':
+        validComWarning($_GET['idComWarning']);
         break;
 
     default:

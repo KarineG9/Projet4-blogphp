@@ -20,13 +20,12 @@ header{
     justify-content: space-around;
 
 }
-
-
-.title-header{
+.logo-header p a{
     font-family: 'Great Vibes';
     margin: auto;
     color: rgba(81,234,234,0.75);
     font-size: 40px;
+    text-decoration: none;
 }
 
 nav ul{
@@ -276,11 +275,24 @@ label{
     text-decoration: underline;
 }
 .title-post{
-    font-size:30px;
-    color:white;
+    font-size: 26px;
+    color: white;
+    text-align: center;
+}
+.title-listpost{
+    font-size: 16px;
+    color: white;
+}
+.content-listpost{
+    color: white;
 }
 .content-post{
     color: white;
+}
+.content-post {
+    color:white;
+    font-size: 18px;
+    padding: 2em;
 }
 em, em a{
     font-size:13px;
@@ -318,10 +330,10 @@ textarea{
 }
 
 #synopsis{
-    background-color: black;
+    background-color: white;
     padding: 2em;
     margin-bottom: 1em;
-    color: white;
+    color: black;
 }
 /*CONNEXION PAGE*/
 
