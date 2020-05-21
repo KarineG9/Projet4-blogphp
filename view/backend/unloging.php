@@ -21,36 +21,42 @@ require_once('controller/ControllerBack.php');
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expend">
+                <div class="nav-brand logo-header">
+                    <a href="index.php">Bienvenue
+                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a>
 
-    <header>
-        <div class="logo-header">
-            <p><a href="index.php">Bienvenue <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
-
-        </div>
-        <nav>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=Unloging">Déconnexion</a></li>
-
-            </ul>
-        </nav>
-    </header>
-    <div class="container admin">
-        <div class="row">
-            <br />
-            <form class="form-horizontal" action="index" method="POST">
-                <input type="hidden" name="id" value="unlogSubmit" />
-
-                <p><strong>Vous allez vous déconnecter.</strong></p>
-
-                <br />
-                <div class="form-actions">
-                    <button type="submit" value="unlogSubmit" name="action" class="btn btn-outline-warning">Oui</button>
-                    <a class="btn" href="index.php?action=homeAdmin">Non</a>
                 </div>
-                <p>
 
-            </form>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=homeAdmin">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=commentAdmin">Commentaires</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=Unloging">Déconnexion</a></li>
+
+                </ul>
+            </nav>
+        </header>
+        <div class="container admin">
+            <div class="row">
+                <div class="col-lg-12">
+                    <br />
+                    <form class="form-horizontal" action="index" method="POST">
+                        <input type="hidden" name="id" value="unlogSubmit" />
+
+                        <p><strong>Vous allez vous déconnecter.</strong></p>
+
+                        <br />
+                        <div class="form-actions">
+                            <button type="submit" value="unlogSubmit" name="action"
+                                class="btn btn-outline-warning">Oui</button>
+                            <a class="btn" href="index.php?action=homeAdmin">Non</a>
+                        </div>
+                        <p>
+
+                    </form>
+                </div>
+            </div>
         </div>
     </div>

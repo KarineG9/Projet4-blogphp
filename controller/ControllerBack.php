@@ -15,7 +15,7 @@ function adminConnection($pseudo, $password)
         $_SESSION['username'] = $userModel['username'];
         $postAdminObj = new ItemManager();
         $posts = $postAdminObj->getAllPosts();
-        require('view/frontend/homeAdmin.php');
+        require('view/backend/homeAdmin.php');
     } else {
 
         $_SESSION['error'] = "Votre identifient et votre mot de passe est incorrect";

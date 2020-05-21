@@ -14,51 +14,29 @@ body{
     position: relative;
 }
 
-header{
+.logo-header a{
+    font-family: 'Great Vibes';
+    margin: auto;
+    color:rgba(81,234,234,0.75);
+    font-size: 35px;
+    text-decoration: none;
+}
+.navbar-expend{
     padding: 3em;
     display: flex;
     justify-content: space-around;
-
 }
-.logo-header p a{
-    font-family: 'Great Vibes';
-    margin: auto;
-    color: rgba(81,234,234,0.75);
-    font-size: 40px;
-    text-decoration: none;
-}
-
 nav ul{
-    display: flex;
-    justify-content: center;
     list-style: none;
     padding: 13px;
-
-   
-}
-
-nav li{
-    margin-right: 3em;
-    font-size: 20px;
-   
-
 }
 nav a {
     color: #29C7AC;
-    padding: 1em;
-    font-size: 17px;
-
-     
+    font-size: 18px;
 }
-nav a:hover
+.nav-link:hover
 {
-    color: rgba(81,234,234,0.75);
-    border-bottom: 2px solid rgba(81,234,234,0.75);
-    padding-bottom: 20px;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.5);
-    padding: 1em;
-    border-radius: 0.3em;
+    color: white;
 }
 .container-accueil{
     position: relative;
@@ -112,7 +90,8 @@ nav a:hover
 
 /*SECTION BIOGRAPHIE*/
 
-.img-responsive{
+.img-fluid{
+    top: -16em;
     max-width: 100%;
     height: auto;
     display: block;
@@ -151,9 +130,11 @@ hr{
 .container-bio p{
     color: white;
     font-family: auto;
-    font-size: 18px;
-    width: 94%;
-   padding-top: 8em;
+    font-size: 19px;
+    width: 100%;
+    padding-top: 8em;
+    text-align: center;
+    margin: auto;
 }
 .texte-biographie{
     font-size: 18px;
@@ -183,12 +164,10 @@ img{
     margin: auto auto 3em;
 }
 .container-contact{
-    background-color: rgba(250,250,250,1);
+    background-color: white;
     position: relative;
-    margin: 5em auto 0em auto;
-    height: 800px;
-    
-    
+    margin: auto;
+    width: 100%;
 }
 .row{
     margin:auto;
@@ -220,7 +199,7 @@ label{
 }
 #contact-form input[type=submit]
 {
-    margin: 40px auto 0px;
+    margin: auto 0px 4em;
     display: block;
 }
 
@@ -410,13 +389,12 @@ footer p{
 .admin
 {
     background: #fff;
-    padding: 50px;
+    padding: 30px;
     border-radius: 10px;
 }
 .form-group {
     width: 100%;
-    padding: 2em;
-    margin-bottom: 1rem;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     
@@ -426,7 +404,7 @@ footer p{
     flex-direction: column;
 }
 .titleadmin {
-    font-size: 27px;
+    font-size: 30px;
     padding-right: 1em;
     font-weight: bold;
 }

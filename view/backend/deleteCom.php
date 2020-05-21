@@ -21,35 +21,43 @@ require_once('controller/ControllerBack.php');
 
 <body>
 
-    <header>
-        <div class="logo-header">
-            <p class='title-header'>Bienvenue</p>
-        </div>
-        <nav>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expend">
+                <div class="nav-brand logo-header">
+                    <a href="index.php">Bienvenue
+                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a>
+                </div>
 
-    <div class="container admin">
-        <div class="row">
-            <div class="form-group">
-                <h1>Supprimer un article </h1>
-                <br>
-                <div class="container admin">
-                    <div class="row">
-                        <form class="form-horizontal" role="form" action="index.php?action=deleteComSubmit" method="POST">
-                            <input type="hidden" id="id" name="id" value="<?php echo $id ?>" />
-                            <p class="alert alert-danger">Confirmez-vous la suppression ?</p>
-                            <br />
-                            <div class="form-actions">
-                                <button type="submit" name="action" value="action" class="btn btn-danger">Oui</button>
-                                <a class="btn" href="index.php?action=commentAdmin">Non</a>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=homeAdmin">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=commentAdmin">Commentaires</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=unloging">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container admin">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <h1 class="titleadmin">Supprimer un article </h1>
+                        <br>
+                        <div class="container admin">
+                            <div class="row">
+                                <form class="form-horizontal" role="form" action="index.php?action=deleteComSubmit"
+                                    method="POST">
+                                    <input type="hidden" id="id" name="id" value="<?php echo $id ?>" />
+                                    <p class="alert alert-danger">Confirmez-vous la suppression ?</p>
+                                    <br />
+                                    <div class="form-actions">
+                                        <button type="submit" name="action" value="action"
+                                            class="btn btn-danger">Oui</button>
+                                        <a class="btn" href="index.php?action=commentAdmin">Non</a>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

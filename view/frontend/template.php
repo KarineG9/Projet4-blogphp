@@ -16,18 +16,19 @@
 </head>
 
 <body>
+
     <div class="container-body">
         <header>
-            <div class="logo-header">
+            <nav class="navbar navbar-expend">
+                <div class="nav-brand logo-header">
+                    <a href="index.php">Jean Forteroche</a>
+                </div>
 
-                <p><a href="index.php">Jean Forteroche</a></p>
-            </div>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-item" href="index.php">ACCUEIL</a></li>
-                    <li class="nav-item"><a class="nav-item" href="index.php?action=biographie">BIOGRAPHIE</a></li>
-                    <li class="nav-item"><a class="nav-item" href="index.php?action=listPosts">ROMANS</a></li>
-                    <li class="nav-item"><a class="nav-item" href="index.php?action=contact">CONTACT</a></li>
+                <ul class="navbar nav">
+                    <li class="nav-item"><a class="nav-link" href="index.php">ACCUEIL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=biographie">BIOGRAPHIE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=listPosts">ROMANS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=contact">CONTACT</a></li>
                 </ul>
             </nav>
         </header>
@@ -58,6 +59,7 @@
 
         </footer>
     </div>
+
 </body>
 
 </html>

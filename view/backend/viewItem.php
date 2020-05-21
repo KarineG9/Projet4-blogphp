@@ -24,38 +24,41 @@ require_once('controller/ControllerBack.php');
 <body>
 
     <header>
-        <div class="logo-header">
-            <p><a href="index.php">Bienvenue
-                    <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a></p>
+        <div class="container">
+            <nav class="navbar navbar-expend">
+                <div class="nav-brand logo-header">
+                    <a href="index.php">Bienvenue
+                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a>
+                </div>
+                <ul class="navbar nav">
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=homeAdmin">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=commentAdmin">Commentaires</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=unloging">Déconnexion</a></li>
 
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-item" href="index.php?action=homeAdmin">Articles</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=commentAdmin">Commentaires</a></li>
-                <li class="nav-item"><a class="nav-item" href="index.php?action=unloging">Déconnexion</a></li>
-
-            </ul>
-        </nav>
     </header>
 
     <div class="container admin">
         <div class="row">
-            <div class="form-group">
-                <h1>Vue de l'article</h1>
-                <br>
-                <div class='listItem'>
-                    <?php
-                    $item = $seeItem->fetch(PDO::FETCH_ASSOC);
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <h1 class="titleadmin">Vue de l'article</h1>
+                    <br>
+                    <div class='listItem'>
+                        <?php
+                        $item = $seeItem->fetch(PDO::FETCH_ASSOC);
 
-                    ?>
-                    <label>Auteur</label><?php echo ' ' . $item['author_post']; ?>
-                    <label>Titre</label><?php echo ' ' . $item['title']; ?>
-                    <label>Contenu</label><?php echo ' ' . $item['content']; ?>
-                    <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
+                        ?>
+                        <label>Auteur</label><?php echo ' ' . $item['author_post']; ?>
+                        <label>Titre</label><?php echo ' ' . $item['title']; ?>
+                        <label>Contenu</label><?php echo ' ' . $item['content']; ?>
+                        <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
+                    </div>
+                    <br>
+                    <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
                 </div>
-                <br>
-                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
             </div>
         </div>
     </div>
