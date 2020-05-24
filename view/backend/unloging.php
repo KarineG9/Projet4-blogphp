@@ -42,20 +42,16 @@ require_once('controller/ControllerBack.php');
             <div class="row">
                 <div class="col-lg-12">
                     <br />
-                    <form class="form-horizontal" action="index" method="POST">
-                        <input type="hidden" name="id" value="unlogSubmit" />
+                    <form class="form-horizontal" action="index.php" method="POST">
 
-                        <p><strong>Vous allez vous déconnecter.</strong></p>
-
-                        <br />
-                        <div class="form-actions">
-                            <button type="submit" value="unlogSubmit" name="action"
-                                class="btn btn-outline-warning">Oui</button>
-                            <a class="btn" href="index.php?action=homeAdmin">Non</a>
-                        </div>
-                        <p>
-
+                        <button type="submit">Oui</button>
+                        <input type="hidden" name="action" value="unlogSubmit">
                     </form>
+                    <form class="form-horizontal" action="index.php" method="POST">
+                        <button type="submit">Non</button>
+                        <input type="hidden" name="action" value="homeAdmin">
+                    </form>
+
                 </div>
             </div>
         </div>

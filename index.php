@@ -1,31 +1,41 @@
 <?php
-
 session_start();
 require __DIR__ . '/vendor/autoload.php';
 require('controller/ControllerFront.php');
 require('controller/ControllerBack.php');
+$urlGet = filter_input_array(INPUT_GET);
+$urlPost = filter_input_array(INPUT_POST);
 
+if (isset($urlGet['action'])) {
+    $route = $urlGet['action'];
+} else if (isset($urlPost['action'])) {
+    $route = $urlPost['action'];
+}
 
-if (false === isset($_GET['action'])) {
+if (empty($route)) {
     home();
-
     return;
 }
-switch ($_GET['action']) {
+
+switch ($route) {
+    case 'home':
+        home();
+        break;
+
     case 'listPosts':
         listPosts();
         break;
     case 'post':
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (isset($urlGet['id']) && $urlGet['id'] > 0) {
             post();
         } else {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
         break;
     case 'addComment':
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+        if (isset($urlGet['id']) && $urlGet['id'] > 0) {
+            if (!empty($urlPost['author']) && !empty($urlPost['comment'])) {
+                addComment($urlGet['id'], securiteString($urlPost['author']), securiteString($urlPost['comment']));
             } else {
                 echo 'Erreur : tous les champs ne sont pas remplis !';
             }
@@ -34,18 +44,18 @@ switch ($_GET['action']) {
         }
         break;
     case 'warningComment':
-        warningC($_GET['idWarningC'], $_GET['idPostC']);
+        warningC($urlGet['idWarningC'], $urlGet['idPostC']);
         break;
     case 'connexion':
         loginPage();
         break;
     case 'homeAdmin':
-        if (!isset($_SESSION['username'])) {
-            adminConnection($_POST['username'], $_POST['pass']);
-        } else {
-            $postAdminObj = new ItemManager();
-            $posts = $postAdminObj->getAllPosts();
+        if (!empty($_SESSION['username'])) {
             require('view/backend/homeAdmin.php');
+        } else if (!empty($urlPost['username']) && !empty($urlPost['pass'])) {
+            adminConnection(securiteString($urlPost['username']), securiteString($urlPost['pass']));
+        } else {
+            loginPage();
         }
         break;
     case 'biographie':
@@ -57,16 +67,16 @@ switch ($_GET['action']) {
     case 'viewItem':
         $itemObj = new ItemManager();
         $seeItem = $itemObj->readPost($_GET['id']);
-        seeItem($_GET['id']);
+        seeItem($urlGet['id']);
         break;
     case 'insertItem':
         require_once('view/backend/insertPost.php');
         break;
     case 'createSubmit':
-        if (!empty($_POST)) {
-            $author = $_POST["author_post"];
-            $title = $_POST["title"];
-            $content = $_POST["content"];
+        if (!empty($urlPost)) {
+            $author = $urlPost["author_post"];
+            $title = $urlPost["title"];
+            $content = $urlPost["content"];
             $postAdminObj = new ItemManager();
             $posts = $postAdminObj->getAllPosts();
             addItem($author, $title, $content);
@@ -76,21 +86,21 @@ switch ($_GET['action']) {
         viewPostUpdate();
         break;
     case 'updateSubmit':
-        $id = $_POST['id'];
-        $author = $_POST["author_post"];
-        $title = $_POST["title"];
-        $content = $_POST["content"];
+        $id = $urlPost['id'];
+        $author = $urlPost["author_post"];
+        $title = $urlPost["title"];
+        $content = $urlPost["content"];
         updateItem($id, $author, $title, $content);
         break;
     case 'deleteItem':
-        if (!empty($_GET['id'])) {
-            $id = $_GET['id'];
+        if (!empty($urlGet['id'])) {
+            $id = $urlGet['id'];
             require_once('view/backend/deletePost.php');
         }
         break;
     case 'deleteSubmit':
-        if (!empty($_POST['id'])) {
-            $id = $_POST['id'];
+        if (!empty($urlPost['id'])) {
+            $id = $urlPost['id'];
             $postAdminObj = new ItemManager();
             $posts = $postAdminObj->getAllPosts();
             deleteItem($id);
@@ -108,23 +118,22 @@ switch ($_GET['action']) {
         require('view/backend/commentsHome.php');
         break;
     case 'deleteCom':
-        if (!empty($_GET['id'])) {
-            $id = $_GET['id'];
+        if (!empty($urlGet['id'])) {
+            $id = $urlGet['id'];
             require_once('view/backend/deleteCom.php');
         }
         break;
     case 'deleteComSubmit':
-        if (!empty($_POST['id'])) {
-            $id = $_POST['id'];
+        if (!empty($urlPost['id'])) {
+            $id = $urlPost['id'];
             $commentAdminObj = new CommentsHome();
             $viewComs = $commentAdminObj->getAllComments();
             deleteOneCom($id);
         }
         break;
     case 'acceptCom':
-        validComWarning($_GET['idComWarning']);
+        validComWarning($urlGet['idComWarning']);
         break;
-
     default:
-        home();
+        header('Location: view\frontend\page404.php');
 }

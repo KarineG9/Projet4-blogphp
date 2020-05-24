@@ -53,7 +53,14 @@
             </div>
             <div id="Admin">
                 <h3>Admin</h3>
-                <p><a href="index.php?action=connexion">Connexion</a></p>
+                <?php
+                if (!empty($_SESSION['username'])) {
+
+                    echo '<p><a href="index.php?action=homeAdmin">Administration</a></p>';
+                } else {
+                    echo  '<p><a href="index.php?action=connexion">Connexion</a></p>';
+                }
+                ?>
             </div>
 
 

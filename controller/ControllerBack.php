@@ -11,15 +11,15 @@ function adminConnection($pseudo, $password)
     $userObj = new LoginConnexion();
     $userModel = $userObj->loginUser($pseudo);
 
-    if ($userModel != FALSE && password_verify($password, $userModel['pass'])) {
+    if ($userModel !== FALSE && password_verify($password, $userModel['pass'])) {
+
         $_SESSION['username'] = $userModel['username'];
         $postAdminObj = new ItemManager();
         $posts = $postAdminObj->getAllPosts();
         require('view/backend/homeAdmin.php');
     } else {
-
         $_SESSION['error'] = "Votre identifient et votre mot de passe est incorrect";
-        require('view/frontend/loginAdmin.php');
+        require_once('view/frontend/loginAdmin.php');
     }
 }
 
@@ -76,11 +76,14 @@ function deleteItem($id)
 
 function unlogAdmin()
 {
-    require('view/backend/unlogAdmin.php');
+    $_SESSION = array();
+    session_destroy();
+    require_once('view/frontend/accueil.php');
 }
 
 function unlogPage()
 {
+
     require('view/backend/unloging.php');
 }
 /* COMMENTS HOME */
@@ -115,4 +118,11 @@ function validComWarning($IDcomment)
     $commentAdminObj = new CommentsHome();
     $validWcom = $commentAdminObj->validWarningComment($IDcomment);
     require('view/backend/commentsHome.php');
+}
+
+function securiteString($value)
+{
+    $value = trim($value);
+    $value = filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+    return $value;
 }

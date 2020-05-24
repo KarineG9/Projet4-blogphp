@@ -1,6 +1,7 @@
 <?php
 require_once('controller/ControllerBack.php');
-
+$postAdminObj = new ItemManager();
+$posts = $postAdminObj->getAllPosts();
 
 ?>
 
@@ -33,6 +34,7 @@ require_once('controller/ControllerBack.php');
                     <li class="nav-item"><a class="nav-link" href="index.php?action=homeAdmin">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.php?action=commentAdmin">Commentaires</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.php?action=unloging">Déconnexion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=listPosts">Roman</a></li>
                 </ul>
             </nav>
         </header>
@@ -62,17 +64,20 @@ require_once('controller/ControllerBack.php');
                                 <?php
                                 while ($item = $posts->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
-                                    <tr>
-                                        <td width=100><?php echo $item['author_post'] ?></td>
-                                        <td width=100> <?php echo $item['title'] ?></td>
-                                        <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
-                                        <td width=100><?php echo $item['creation_date'] ?></td>
-                                        <td width=170>
-                                            <a class="btn btn-outline-info btn-md" href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
-                                            <a class="btn btn-outline-dark btn-md" href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Modifier</a>
-                                            <a class="btn btn-outline-danger btn-md" href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td width=100><?php echo $item['author_post'] ?></td>
+                                    <td width=100> <?php echo $item['title'] ?></td>
+                                    <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
+                                    <td width=100><?php echo $item['creation_date'] ?></td>
+                                    <td width=170>
+                                        <a class="btn btn-outline-info btn-md"
+                                            href="index.php?action=viewItem&amp;id=<?php echo $item['id'] ?>">Lire</a>
+                                        <a class="btn btn-outline-dark btn-md"
+                                            href="index.php?action=updateItem&amp;id=<?php echo $item['id'] ?>">Modifier</a>
+                                        <a class="btn btn-outline-danger btn-md"
+                                            href="index.php?action=deleteItem&amp;id=<?php echo $item['id'] ?>">Supprimer</a>
+                                    </td>
+                                </tr>
 
                                 <?php
                                 }
