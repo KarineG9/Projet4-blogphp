@@ -28,27 +28,27 @@ while ($element = $posts->fetch(PDO::FETCH_ASSOC)) {
 
 ?>
 
-<div class="container">
-    <div class="col-lg-12">
+    <div class="container">
+        <div class="col-lg-12">
 
-        <article class="news">
-            <h3 class="title-listpost">
-                <p><?= htmlspecialchars($element['title']); ?>
-                    <em>le <?= $element['creation_date_fr']; ?></em>
-                </p>
-            </h3>
+            <article class="news">
+                <h3 class="title-listpost">
+                    <p><?= htmlspecialchars($element['title']); ?>
+                        <em>le <?= $element['creation_date_fr']; ?></em>
+                    </p>
+                </h3>
 
 
-            <div class="content-listpost">
-                <p>
-                    <?= nl2br(substr($element['content'], 0, 300)); ?>
-                </p>
-                <br />
-                <em><a href="index.php?action=post&amp;id=<?= $element['id'] ?>">Lire la suite</a></em>
-            </div>
-        </article>
+                <div class="content-listpost">
+                    <p>
+                        <?= nl2br(substr($element['content'], 0, 300)); ?>
+                    </p>
+                    <br />
+                    <em><a href="index.php?action=post&amp;id=<?= $element['id'] ?>">Lire la suite</a></em>
+                </div>
+            </article>
+        </div>
     </div>
-</div>
 <?php
 }
 $posts->closeCursor();
@@ -56,4 +56,4 @@ $posts->closeCursor();
 ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('templateFront.php'); ?>

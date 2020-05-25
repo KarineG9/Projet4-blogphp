@@ -11,8 +11,7 @@
 
                     <div class="col-md-6">
                         <label for="firstname">Prénom <span class="blue">*</span></label>
-                        <input id="firstname" type="text" name="firstname" class="form-control"
-                            placeholder="Votre prénom">
+                        <input id="firstname" type="text" name="firstname" class="form-control" placeholder="Votre prénom">
                         <p class="comments"></p>
                     </div>
                     <div class="col-md-6">
@@ -32,8 +31,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="message">Message <span class="blue">*</span></label>
-                        <textarea id="message" name="message" class="form-control" placeholder="Votre Message"
-                            rows="4"></textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="Votre Message" rows="4"></textarea>
                         <p class="comments"></p>
                     </div>
                     <div class="col-md-12">
@@ -48,4 +46,4 @@
     </div>
 </div>
 <?php $content = ob_get_clean(); ?>
-<?php require('template.php'); ?>
+<?php require('templateFront.php'); ?>
