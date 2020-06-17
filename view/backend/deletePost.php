@@ -4,7 +4,7 @@ require_once('controller/ControllerBack.php');
 ?>
 
 <?php ob_start(); ?>
-<div class="container admin">
+<div class="container admin mt-5">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -18,7 +18,7 @@ require_once('controller/ControllerBack.php');
                             <br />
                             <div class="form-actions">
                                 <button type="submit" name="action" value="action" class="btn btn-danger">Oui</button>
-                                <a class="btn btn-light" href="index.php?action=homeAdmin">Non</a>
+                                <a class="btn btn-light" href="homeAdmin">Non</a>
                             </div>
                         </form>
                     </div>

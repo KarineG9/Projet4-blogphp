@@ -3,9 +3,9 @@
 class Database
 {
 
-    const DB_HOST = 'mysql:host=localhost;dbname=projetblog;charset=utf8';
-    const DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_HOST = 'mysql:host=karinegrkn685.mysql.db;dbname=karinegrkn685;charset=utf8';
+    const DB_USER = 'karinegrkn685';
+    const DB_PASS = 'PASSOvHBDD14';
 
     private $connection;
 

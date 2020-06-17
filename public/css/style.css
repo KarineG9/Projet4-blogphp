@@ -13,31 +13,35 @@ body{
 .container-body{
     position: relative;
 }
-
-.logo-header a{
+ .navbar-brand, .navbar-brand:hover{
     font-family: 'Great Vibes';
-    margin: auto;
     color:rgba(81,234,234,0.75);
     font-size: 35px;
     text-decoration: none;
+} 
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(81,234,234,0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+.bg-custom{
+    background-color: black;
+    padding: 4em;
 }
-.navbar-expend{
-    padding: 3em;
-    display: flex;
-    justify-content: space-around;
+.ml-auto a{
+    text-align: center;
+    color:rgba(81,234,234,0.75);
+    font-size: 20px;
 }
-nav ul{
-    list-style: none;
-    padding: 13px;
+.ml-auto a:hover{
+    border-bottom: 1px solid white;
 }
-nav a {
-    color: #29C7AC;
-    font-size: 18px;
-}
-.nav-link:hover
-{
-    color: white;
-}
+/* Set the border color */ 
+          
+.custom-toggler.navbar-toggler { 
+    border-color: rgba(81,234,234,0.75); 
+} 
+
+/*PAGE ACCUEIL */
 .container-accueil{
     position: relative;
     margin: 5em auto 15em auto;
@@ -52,65 +56,66 @@ nav a {
     font-size: 40px;
     text-align: center;
     color: white;
-    padding: 1em;
+    padding-top: 1em;
 
    
 }
 .container-accueil a{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1em;
+    padding: 1em;
     text-decoration: none;
+    margin: auto;
+    background-color: rgba(81,234,234,0.75);
 }
 .btn-bio{
+    margin: auto;
     min-width: 17%;
-    height: 60px;
     background-color: rgba(81,234,234,0.75);
     color: white;
     font-size: 20px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    padding: 1em;
 }
 .btn-bio:hover, .btn-chapitre:hover{
     color: black;
 }
 .btn-chapitre{
+    margin: auto;
     min-width: 17%;
-    height: 60px;
     background-color: rgba(81,234,234,0.75);
     color: white;
     font-size: 20px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    padding: 1em;
     
 }
 
 
 /*SECTION BIOGRAPHIE*/
 
-.img-fluid{
-    top: -16em;
-    max-width: 100%;
-    height: auto;
+.container-bio img{
     display: block;
-    margin: auto 0;
+    margin: auto;
 }
+.centreVerticalement {
+    display: flex;
+    align-items: center;
+   }
 .titre-bio{
-    padding-top: 5em;
+    padding-top: 11em;
     font-family: Verdana;
     color: WHITE;
-    font-size: 50px;
     font-weight: bold;
-    text-align: end;
-    padding-right: 3em;
-    margin-top: 1em;
 }
 
 h1{
-   font-size: 50px;
+   font-size: 40px;
    font-weight: bold;
+   margin: auto;
+   padding-bottom: 1em;
 }
 
 .container-bio{
@@ -132,21 +137,16 @@ hr{
     font-family: auto;
     font-size: 19px;
     width: 100%;
-    padding-top: 8em;
     text-align: center;
     margin: auto;
+    padding-top: 3em;
+    padding-bottom: 5em;
 }
 .texte-biographie{
     font-size: 18px;
     margin: 50px;
 }
-img{
-    width: 30%;
-    position: absolute;
-    border: 12px solid white;
-    top: 11em;
-    right: 57em;
-}
+
 
 /*CONTACT PAGE*/
 
@@ -158,7 +158,7 @@ img{
 }
 .divider
 {
-    width: 500px;
+    width: 40%;
     height: 1px;
     background: black;
     margin: auto auto 3em;
@@ -192,11 +192,7 @@ label{
     font-family: serif;
 
 }
-.form-control
-{
-    height: 40px;
-    font-size: 14px;
-}
+
 #contact-form input[type=submit]
 {
     margin: auto 0px 4em;
@@ -318,35 +314,25 @@ textarea{
 
 #container-login{
     background-color: rgba(250,250,250,0.5);
-    position: relative;
-    margin: 5em auto 20em auto;
-    padding: 1em;
-    height: 370px;
-    width: 40%;
-}
-#loginform{
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-size: 15px;
-    align-items: center;
 }
+
 .title-login{
     font-size: 37px;
-    padding: 1em;
+    text-align: center;
+    margin-bottom: 1em;
 }
 .button2{
     border: 1px solid #29c7ac;
     background-color: black;
     color: white;
-    width: 45%;
     font-weight: bold;
     text-transform: uppercase;
     padding: 18px;
     border-radius: 5px;
     transition: all 0.3s ease-in 0s;
     cursor: pointer;
+    margin-top: 2em;
 }
 
 /*FOOTER*/
@@ -412,6 +398,9 @@ footer p{
     display: flex;
     margin-bottom: 1em;
 }
+.btn-outline-success{
+    height:40px;
+}
 /*COMMENTAIRES ADMIN LIST*/
 #commentAlert{
     color: black;
@@ -419,4 +408,58 @@ footer p{
     padding-top: 1em;
     font-family: unset;
     font-weight: bold;
+}
+
+/*PAGE 404 */
+
+
+#center{
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    color: white;
+    font-size: 25px;
+}
+
+.error{
+    font-size: 80px;
+}
+
+@media (min-width: 900px) and (max-width: 2500px) {
+    .container-bio img{
+        display: block;
+        margin: auto;
+        width: 40%;
+    
+    }
+}
+@media (min-width: 480px) and (max-width: 900px) {
+    .container-bio img{
+        display: block;
+        margin: auto;
+        width: 80%;
+    
+    }
+    form #author, textarea{
+        background-color: #29C7AC;
+        border: 1px solid white;
+        width: 100%;
+    }
+}
+@media (min-width: 280px) and (max-width: 478px) {
+    .container-bio img{
+        display: block;
+        margin: auto;
+        width: 80%;
+    
+    }
+    form #author, textarea{
+        background-color: #29C7AC;
+        border: 1px solid white;
+        width: 100%;
+    }
+    h1{
+        font-size: 30px;
+    }
 }

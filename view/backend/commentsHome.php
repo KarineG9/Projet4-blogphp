@@ -7,7 +7,7 @@ $viewCommW = listWarningComments();
 
 <?php ob_start(); ?>
 
-<div class="container admin">
+<div class="container admin mt-5">
     <div class="row">
         <div class="col-lg-12">
             <div class="title-group">

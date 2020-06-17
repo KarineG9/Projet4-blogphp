@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^([a-zA-Z-]+)$ /index.php?action=$1 [NC,L]
+

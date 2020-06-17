@@ -1,17 +1,13 @@
 <?php ob_start(); ?>
+
 <div class="container-bio">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="titre-bio">
-                    <h1>Jean Forteroche, </h1>
-                    <h1>écrivain aventurier</h1>
-                </div>
-
-
-                <div class="col-lg-12">
-                    <img src="public/css/images/homme.jpg" class='img-fluid' alt="Responsive image" />
-
+            <div class="col-md-12">
+                <div class="titre-bio d-flex flex-wrap justify-content-between">
+                    <h1>Jean Forteroche, <br>
+                        écrivain aventurier</h1>
+                    <img src="public/css/images/homme.jpg" alt="Responsive image" />
                 </div>
 
                 <p class="texte-biographie">

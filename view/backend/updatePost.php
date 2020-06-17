@@ -5,7 +5,7 @@ require_once('controller/ControllerBack.php');
 ?>
 
 <?php ob_start(); ?>
-<div class="container admin">
+<div class="container admin mt-5">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -17,7 +17,7 @@ require_once('controller/ControllerBack.php');
                     $item = $seeItem->fetch(PDO::FETCH_ASSOC);
 
                     ?>
-                    <form class="form" role="form" action='index.php?action=updateSubmit' method="POST">
+                    <form class="form" role="form" action='updateSubmit' method="POST">
                         <input type="hidden" id="id" name="id" value="<?php echo $item['id'] ?>" />
                         <label>Auteur</label>
                         <input type="text" class="form-control" id="author_id" name="author_post" placeholder=""
@@ -33,7 +33,7 @@ require_once('controller/ControllerBack.php');
                 <br>
                 <button type="submit" class="btn btn-outline-success" value="action" name="action">Modifier</button>
                 <br>
-                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
+                <a class="btn btn-outline-primary" href="homeAdmin">Retour aux articles</a>
                 </form>
             </div>
         </div>

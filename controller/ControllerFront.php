@@ -15,13 +15,16 @@ function listPosts()
 
 function post()
 {
-
     $data = new PostManager();
     $posts = $data->getPost($_GET['id']);
-
-    $commentObj = new CommentManager();
-    $comments = $commentObj->getComments($_GET['id']);
-    require('view/frontend/postView.php');
+    $posts = $posts->fetch(PDO::FETCH_ASSOC);
+    if ($posts != false) {
+        $commentObj = new CommentManager();
+        $comments = $commentObj->getComments($_GET['id']);
+        require('view/frontend/postView.php');
+    } else {
+        pageError();
+    }
 }
 
 function addComment($postId, $author, $comment)
@@ -60,4 +63,9 @@ function warningC($commentID, $id)
     $commentW = new CommentManager();
     $commW = $commentW->warningComment($commentID);
     header('Location: index.php?action=post&id=' . $id);
+}
+
+function pageError()
+{
+    require('view\frontend\page404.php');
 }

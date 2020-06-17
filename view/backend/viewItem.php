@@ -4,7 +4,7 @@ require_once('controller/ControllerBack.php');
 ?>
 
 <?php ob_start(); ?>
-<div class="container admin">
+<div class="container admin mt-5">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
@@ -21,7 +21,7 @@ require_once('controller/ControllerBack.php');
                     <label>Date</label><?php echo ' ' . $item['creation_date']; ?>
                 </div>
                 <br>
-                <a class="btn btn-outline-primary" href="index.php?action=homeAdmin">Retour aux articles</a>
+                <a class="btn btn-outline-primary" href="homeAdmin">Retour aux articles</a>
             </div>
         </div>
     </div>

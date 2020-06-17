@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 
@@ -17,28 +17,34 @@
     });
     </script>
     <link rel="stylesheet" href="public/css/style.css" />
-    <link rel="icon" type="img" href="public/css/images/logo.png" />
+    <link rel="icon" href="public/css/images/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
+
+    <div class="container-body">
         <header>
-            <nav class="navbar navbar-expend">
-                <div class="nav-brand logo-header">
-                    <a href="index.php">Bienvenue
-                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a>
+            <nav class="navbar navbar-expand-md bg-custom">
+
+                <a class="navbar-brand" href="index.php">Bienvenue
+                    <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : NULL; ?></a>
+                <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#responsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="responsive">
+                    <ul class="navbar nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="homeAdmin">Articles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="commentAdmin">Commentaires</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="listPosts">Voir le blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="unloging">Déconnexion</a></li>
+                    </ul>
                 </div>
-
-                <ul class="navbar nav">
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=homeAdmin">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=commentAdmin">Commentaires</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=listPosts">Voir le blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=unloging">Déconnexion</a></li>
-
-                </ul>
             </nav>
         </header>
+
 
         <?= $content ?>
 

@@ -6,14 +6,14 @@ $posts = $postAdminObj->getAllPosts();
 ?>
 <?php ob_start(); ?>
 
-<div class="container admin">
+<div class="container admin mt-5">
     <div class="row">
         <div class="col-lg-12">
 
             <div class="title-group">
                 <h1 class="titleadmin">Liste des articles </h1>
 
-                <a class="btn btn-outline-success btn-md" href="index.php?action=insertItem">Créer</a>
+                <a class="btn btn-outline-success btn-md" href="insertItem">Créer</a>
 
             </div>
             <div class="table-responsive">
@@ -34,7 +34,7 @@ $posts = $postAdminObj->getAllPosts();
                         <tr>
                             <td width=100><?php echo $item['author_post'] ?></td>
                             <td width=100> <?php echo $item['title'] ?></td>
-                            <td width=100><?php echo (substr($item['content'], 0, 120)); ?></td>
+                            <td width=100><?php echo substr(securiteString($item['content']), 0, 120); ?></td>
                             <td width=100><?php echo $item['creation_date'] ?></td>
                             <td width=170>
                                 <a class="btn btn-outline-info btn-md"

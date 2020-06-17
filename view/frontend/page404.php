@@ -16,7 +16,14 @@
 </head>
 
 <body>
-    <p>ERREUR 404</p>
+    <div class="container-fluid" id="center">
+        <div class="mx-auto row align-items-center d-flex flex-column">
+            <h1 class="error">ERREUR 404</h1>
+            <p>Cette page n'existe pas.</p>
+            <a href="home"><button class="btn btn-success" type="submit">Retour à la page
+                    d'accueil</button></a>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -21,7 +21,6 @@ switch ($route) {
     case 'home':
         home();
         break;
-
     case 'listPosts':
         listPosts();
         break;
@@ -65,75 +64,127 @@ switch ($route) {
         contact();
         break;
     case 'viewItem':
-        $itemObj = new ItemManager();
-        $seeItem = $itemObj->readPost($_GET['id']);
-        seeItem($urlGet['id']);
+        if (!empty($_SESSION['username'])) {
+            $itemObj = new ItemManager();
+            $seeItem = $itemObj->readPost($_GET['id']);
+            seeItem($urlGet['id']);
+        } else {
+            loginPage();
+        }
         break;
     case 'insertItem':
-        require_once('view/backend/insertPost.php');
+        if (!empty($_SESSION['username'])) {
+            require_once('view/backend/insertPost.php');
+        } else {
+            loginPage();
+        }
         break;
     case 'createSubmit':
-        if (!empty($urlPost)) {
-            $author = $urlPost["author_post"];
-            $title = $urlPost["title"];
-            $content = $urlPost["content"];
-            $postAdminObj = new ItemManager();
-            $posts = $postAdminObj->getAllPosts();
-            addItem($author, $title, $content);
+        if (!empty($_SESSION['username'])) {
+            if (!empty($urlPost)) {
+                $author = $urlPost["author_post"];
+                $title = $urlPost["title"];
+                $content = $urlPost["content"];
+                $postAdminObj = new ItemManager();
+                $posts = $postAdminObj->getAllPosts();
+                addItem($author, $title, $content);
+            }
+        } else {
+            loginPage();
         }
         break;
     case 'updateItem':
-        viewPostUpdate();
+        if (!empty($_SESSION['username'])) {
+            viewPostUpdate();
+        } else {
+            loginPage();
+        }
         break;
     case 'updateSubmit':
-        $id = $urlPost['id'];
-        $author = $urlPost["author_post"];
-        $title = $urlPost["title"];
-        $content = $urlPost["content"];
-        updateItem($id, $author, $title, $content);
+        if (!empty($_SESSION['username'])) {
+            $id = $urlPost['id'];
+            $author = $urlPost["author_post"];
+            $title = $urlPost["title"];
+            $content = $urlPost["content"];
+            updateItem($id, $author, $title, $content);
+        } else {
+            loginPage();
+        }
         break;
     case 'deleteItem':
-        if (!empty($urlGet['id'])) {
-            $id = $urlGet['id'];
-            require_once('view/backend/deletePost.php');
+        if (!empty($_SESSION['username'])) {
+            if (!empty($urlGet['id'])) {
+                $id = $urlGet['id'];
+                require_once('view/backend/deletePost.php');
+            }
+        } else {
+            loginPage();
         }
         break;
     case 'deleteSubmit':
-        if (!empty($urlPost['id'])) {
-            $id = $urlPost['id'];
-            $postAdminObj = new ItemManager();
-            $posts = $postAdminObj->getAllPosts();
-            deleteItem($id);
+        if (!empty($_SESSION['username'])) {
+            if (!empty($urlPost['id'])) {
+                $id = $urlPost['id'];
+                $postAdminObj = new ItemManager();
+                $posts = $postAdminObj->getAllPosts();
+                deleteItem($id);
+            }
+        } else {
+            loginPage();
         }
         break;
     case 'unloging':
-        unlogPage();
+        if (!empty($_SESSION['username'])) {
+            unlogPage();
+        } else {
+            loginPage();
+        }
         break;
     case 'unlogSubmit':
-        unlogAdmin();
+        if (!empty($_SESSION['username'])) {
+            unlogAdmin();
+        } else {
+            loginPage();
+        }
         break;
     case 'commentAdmin':
-        listCommentsHome();
-        listWarningComments();
-        require('view/backend/commentsHome.php');
+        if (!empty($_SESSION['username'])) {
+            listCommentsHome();
+            listWarningComments();
+            require('view/backend/commentsHome.php');
+        } else {
+            loginPage();
+        }
         break;
     case 'deleteCom':
-        if (!empty($urlGet['id'])) {
-            $id = $urlGet['id'];
-            require_once('view/backend/deleteCom.php');
+        if (!empty($_SESSION['username'])) {
+            if (!empty($urlGet['id'])) {
+                $id = $urlGet['id'];
+                require_once('view/backend/deleteCom.php');
+            }
+        } else {
+            loginPage();
         }
         break;
     case 'deleteComSubmit':
-        if (!empty($urlPost['id'])) {
-            $id = $urlPost['id'];
-            $commentAdminObj = new CommentsHome();
-            $viewComs = $commentAdminObj->getAllComments();
-            deleteOneCom($id);
+        if (!empty($_SESSION['username'])) {
+            if (!empty($urlPost['id'])) {
+                $id = $urlPost['id'];
+                $commentAdminObj = new CommentsHome();
+                $viewComs = $commentAdminObj->getAllComments();
+                deleteOneCom($id);
+            }
+        } else {
+            loginPage();
         }
         break;
     case 'acceptCom':
-        validComWarning($urlGet['idComWarning']);
+        if (!empty($_SESSION['username'])) {
+            validComWarning($urlGet['idComWarning']);
+        } else {
+            loginPage();
+        }
         break;
     default:
-        header('Location: view\frontend\page404.php');
+        pageError();
 }

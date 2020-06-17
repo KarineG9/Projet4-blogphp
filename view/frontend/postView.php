@@ -1,13 +1,13 @@
 <?php ob_start(); ?>
 
 <h1 class=title-chap>Chapitre 1</h1>
-<a href="index.php?action=listPosts">
+<a href="listPosts">
 
     <p class='returnlist'>Retour aux chapitres</p>
 </a>
 <div class="news">
     <?php
-    $data = $posts->fetch(PDO::FETCH_ASSOC);
+    $data = $posts;
 
     ?>
     <h3 class='title-post'>
@@ -30,13 +30,14 @@
     while ($comment = $comments->fetch(PDO::FETCH_ASSOC)) {
     ?>
 
-        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
-            <a href="index.php?action=warningComment&amp;idWarningC=<?= $comment['id'] ?>&amp;idPostC=<?= $data['id'] ?>">(signaler)</a>
-            <span style="color:red"><?php echo isset($alert) ? $alert : NULL; ?></span>
-        </p>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
+        <a
+            href="index.php?action=warningComment&amp;idWarningC=<?= $comment['id'] ?>&amp;idPostC=<?= $data['id'] ?>">(signaler)</a>
+        <span style="color:red"><?php echo isset($alert) ? $alert : NULL; ?></span>
+    </p>
 
 
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <p><?= nl2br(filter_var($comment['comment'])) ?></p>
 
 
     <?php
@@ -53,16 +54,9 @@
         <br />
         <textarea id="comment" name="comment"></textarea>
         <br />
-        <button type="submit">Valider</button>
+        <button class="btn btn-light" type="submit">Valider</button>
     </form>
 </div>
-
-
-
-
-
-
-
 
 <?php $content = ob_get_clean(); ?>
 
